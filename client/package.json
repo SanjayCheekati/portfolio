@@ -1,0 +1,52 @@
+{
+  "name": "portfolio-client",
+  "version": "1.0.0",
+  "description": "Modern portfolio website showcasing full-stack development skills with React, Vite, and Tailwind CSS",
+  "author": "Cheekati Sanjay Goud <sanjaycheekati83@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://sanjaycheekati.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SanjayCheekati/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "vite",
+    "tailwind",
+    "framer-motion",
+    "full-stack",
+    "developer"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx"
+  },
+  "dependencies": {
+    "@react-three/drei": "9.70.2",
+    "@react-three/fiber": "8.0.27",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "axios": "1.4.0",
+    "framer-motion": "10.12.16",
+    "gsap": "^3.13.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^5.2.1",
+    "react-parallax-tilt": "^1.7.310",
+    "react-tsparticles": "^2.12.2",
+    "react-type-animation": "^3.2.0",
+    "three": "0.161.0",
+    "tsparticles-preset-stars": "^2.12.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.2.1",
+    "autoprefixer": "10.4.14",
+    "postcss": "8.4.24",
+    "tailwindcss": "3.4.1",
+    "vite": "5.2.0"
+  }
+}

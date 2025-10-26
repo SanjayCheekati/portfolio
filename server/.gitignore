@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+
+# environment
+.env
+.env.local
+
+# visitor count data
+visitor-count.json
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
