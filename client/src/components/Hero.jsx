@@ -58,6 +58,10 @@ export default function Hero() {
                 Sanjay Cheekati — Full Stack Developer specializing in MERN & AI/ML
               </motion.span>
             </h1>
+
+            <p className="text-lg md:text-xl text-slate-200 max-w-3xl mb-6 leading-relaxed">
+              I am a BTech 4th-year Full Stack Developer focused on MERN and AI/ML projects. I build real-world applications including BERT-based toxicity detection, encryption tools, and advanced React/Node systems. You can explore all my latest work on my GitHub: <a href="https://github.com/SanjayCheekati" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">github.com/SanjayCheekati</a>.
+            </p>
             
             {/* Typing Animation */}
             <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-6 h-16" role="doc-subtitle">
