@@ -53,23 +53,27 @@ export default function Hero() {
               <span className="font-medium">Available from January 2026</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4">
               <motion.span className="block bg-gradient-to-r from-primary via-cyan-400 to-accent bg-clip-text text-transparent">
                 Sanjay Cheekati
               </motion.span>
             </h1>
+
+            <p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">
+              Full Stack Developer specializing in MERN & AI/ML
+            </p>
             
             {/* Typing Animation */}
             <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-8 h-16" role="doc-subtitle">
               <TypeAnimation
                 sequence={[
-                  'Full Stack Developer 💻',
+                  'Building Production Apps 💻',
                   2000,
-                  'MERN Specialist 🚀',
+                  'MERN Stack Expert 🚀',
                   2000,
-                  'AI/ML Engineer 🤖',
+                  'AI/ML Solutions 🤖',
                   2000,
-                  'Open Source Contributor ⚡',
+                  'Open Source Projects ⚡',
                   2000,
                 ]}
                 wrapper="span"
