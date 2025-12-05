@@ -226,10 +226,15 @@ export default function Contact() {
 
             <motion.button
               type="submit"
-              disabled={true}
-              className="w-full py-3 md:py-4 rounded-lg bg-gradient-to-r from-slate-700 to-slate-600 text-slate-400 font-semibold shadow-lg opacity-50 cursor-not-allowed flex items-center justify-center gap-2"
-              title="Contact form is currently disabled"
-              aria-label="Send message (currently disabled)"
+              disabled={status === 'sending'}
+              className={`w-full py-3 md:py-4 rounded-lg font-semibold shadow-lg flex items-center justify-center gap-2 transition-all ${
+                status === 'sending'
+                  ? 'bg-gradient-to-r from-slate-700 to-slate-600 text-slate-400 opacity-50 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-primary to-cyan-400 text-black hover:scale-105 hover:shadow-2xl'
+              }`}
+              whileHover={status !== 'sending' ? { scale: 1.05 } : {}}
+              whileTap={status !== 'sending' ? { scale: 0.95 } : {}}
+              aria-label={status === 'sending' ? 'Sending message' : 'Send message'}
             >
               {status === 'sending' ? (
                 <>
