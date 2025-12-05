@@ -27,6 +27,18 @@ export default function About() {
             content you can replace.
           </p>
 
+          <p className="text-base text-slate-400 mb-6">
+            I regularly publish open-source MERN and AI/ML projects on{' '}
+            <a 
+              href="https://github.com/SanjayCheekati" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 underline decoration-cyan-500/50 hover:decoration-cyan-300 transition-colors"
+            >
+              GitHub
+            </a>.
+          </p>
+
           <motion.div className="bg-slate-800 p-6 rounded-2xl shadow-lg">
             <h3 className="font-semibold text-xl mb-4">Tech & Tools</h3>
             <ul className="grid grid-cols-2 gap-3 text-slate-300">

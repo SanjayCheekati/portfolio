@@ -239,8 +239,10 @@ export default function Projects() {
                           whileHover={{ scale: 1.1, rotate: 360 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={(e) => e.stopPropagation()}
+                          aria-label="View source code on GitHub"
+                          title="View source code on GitHub"
                         >
-                          <FiGithub className="text-base" />
+                          <FiGithub className="text-base" aria-hidden="true" />
                         </motion.a>
                       )}
                     </div>
