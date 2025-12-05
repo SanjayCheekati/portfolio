@@ -7,9 +7,12 @@ Sitemap: https://sanjaycheekati.dev/sitemap.xml
 Allow: /assets/
 Allow: /CHEEKATI_SANJAY_GOUD.pdf
 
-# Search engines
+# Boost image previews:
 User-agent: Googlebot
 Allow: /
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.webp$
 
 User-agent: Bingbot
 Allow: /
