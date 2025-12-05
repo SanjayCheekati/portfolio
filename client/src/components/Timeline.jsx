@@ -15,7 +15,7 @@ const timelineData = [
   {
     type: 'education',
     title: 'Diploma - Computer Engineering',
-    organization: 'T.R.R College of Technology',
+    organization: 'TRR College of Technology',
     period: '2020 - 2023',
     description: 'Completed Diploma with 9.04 CGPA. Built strong foundation in programming (C, C++, Java), database management, and web technologies.',
     icon: FiBook,
@@ -39,8 +39,10 @@ export default function Timeline() {
       </p>
       
       <div className="max-w-4xl mx-auto relative">
-        {/* Vertical line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary via-accent to-primary" />
+        {/* Vertical line - hidden on mobile */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary via-accent to-primary hidden md:block" />
+        {/* Mobile vertical line */}
+        <div className="absolute left-8 top-0 h-full w-0.5 bg-gradient-to-b from-primary via-accent to-primary md:hidden" />
 
         {timelineData.map((item, index) => {
           const Icon = item.icon
@@ -50,42 +52,74 @@ export default function Timeline() {
           return (
             <motion.div
               key={index}
-              className={`mb-12 flex items-center w-full ${isLeft ? 'flex-row-reverse' : ''}`}
+              className={`mb-12 flex items-center w-full ${isLeft ? 'md:flex-row-reverse' : ''}`}
               initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className={`w-5/12 ${isLeft ? 'text-left pl-8' : 'text-right pr-8'}`}>
+              {/* Mobile layout - full width with left line */}
+              <div className="w-full md:w-5/12 pl-16 md:pl-0 md:pr-0 md:text-left">
+                <div className={`hidden md:block ${isLeft ? 'md:pl-8' : 'md:pr-8 md:text-right'}`}>
+                  <motion.div
+                    className="bg-slate-800 p-6 rounded-xl shadow-lg"
+                    whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(14, 165, 164, 0.2)' }}
+                  >
+                    <div className={`flex items-center gap-3 mb-2 ${isLeft ? '' : 'justify-end'}`}>
+                      <div className={`p-2 rounded-full ${config.bgColor}`}>
+                        <Icon className={`text-lg bg-gradient-to-r ${config.color} bg-clip-text text-transparent`} style={{ WebkitTextFillColor: 'transparent' }} />
+                      </div>
+                      <h3 className="font-bold text-lg">{item.title}</h3>
+                    </div>
+                    {item.link ? (
+                      <a 
+                        href={item.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary font-semibold mb-1 hover:underline inline-block"
+                      >
+                        {item.organization} ↗
+                      </a>
+                    ) : (
+                      <h4 className="text-primary font-semibold mb-1">{item.organization}</h4>
+                    )}
+                    <p className="text-sm text-slate-400 mb-2">{item.period}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{item.description}</p>
+                  </motion.div>
+                </div>
+
+                {/* Mobile card */}
                 <motion.div
-                  className="bg-slate-800 p-6 rounded-xl shadow-lg"
-                  whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(14, 165, 164, 0.2)' }}
+                  className="bg-slate-800 p-5 rounded-xl shadow-lg md:hidden"
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <div className={`flex items-center gap-3 mb-2 ${isLeft ? '' : 'justify-end'}`}>
-                    <div className={`p-2 rounded-full ${config.bgColor}`}>
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className={`p-2 rounded-full ${config.bgColor} flex-shrink-0`}>
                       <Icon className={`text-lg bg-gradient-to-r ${config.color} bg-clip-text text-transparent`} style={{ WebkitTextFillColor: 'transparent' }} />
                     </div>
-                    <h3 className="font-bold text-lg">{item.title}</h3>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-base leading-tight mb-1">{item.title}</h3>
+                      {item.link ? (
+                        <a 
+                          href={item.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-primary font-semibold text-sm hover:underline inline-block break-words"
+                        >
+                          {item.organization} ↗
+                        </a>
+                      ) : (
+                        <h4 className="text-primary font-semibold text-sm mb-1 break-words">{item.organization}</h4>
+                      )}
+                    </div>
                   </div>
-                  {item.link ? (
-                    <a 
-                      href={item.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-primary font-semibold mb-1 hover:underline inline-block"
-                    >
-                      {item.organization} ↗
-                    </a>
-                  ) : (
-                    <h4 className="text-primary font-semibold mb-1">{item.organization}</h4>
-                  )}
-                  <p className="text-sm text-slate-400 mb-2">{item.period}</p>
+                  <p className="text-xs text-slate-400 mb-2">{item.period}</p>
                   <p className="text-slate-300 text-sm leading-relaxed">{item.description}</p>
                 </motion.div>
               </div>
 
-              {/* Center dot */}
-              <div className="w-2/12 flex justify-center">
+              {/* Center dot - desktop only */}
+              <div className="hidden md:flex w-2/12 justify-center">
                 <motion.div
                   className={`w-4 h-4 rounded-full bg-gradient-to-br ${config.color} border-4 border-slate-900 z-10 shadow-lg`}
                   initial={{ scale: 0 }}
@@ -95,7 +129,16 @@ export default function Timeline() {
                 />
               </div>
 
-              <div className="w-5/12" />
+              {/* Mobile dot */}
+              <motion.div
+                className="absolute left-8 transform -translate-x-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-slate-900 md:hidden"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              />
+
+              <div className="hidden md:block w-5/12" />
             </motion.div>
           )
         })}

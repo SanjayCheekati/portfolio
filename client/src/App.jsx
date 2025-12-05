@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <Suspense fallback={<LoadingSpinner />}>
-      <div className="min-h-screen transition-colors duration-500 bg-gradient-to-b from-gray-900 via-slate-900 to-black text-slate-100">
+      <div className="min-h-screen overflow-x-hidden transition-colors duration-500 bg-gradient-to-b from-gray-900 via-slate-900 to-black text-slate-100">
         {/* Scroll progress bar */}
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent z-50 origin-left"

@@ -54,11 +54,7 @@ export default function MobileMenu({ isOpen, onClose }) {
                 <motion.button
                   key={item}
                   onClick={() => handleClick(item)}
-                  className={`block w-full text-left py-4 px-4 rounded-lg mb-2 text-lg font-medium transition ${
-                    theme === 'dark'
-                      ? 'hover:bg-slate-800 hover:text-primary'
-                      : 'hover:bg-slate-100 hover:text-accent'
-                  }`}
+                  className="block w-full text-left py-4 px-4 rounded-lg mb-2 text-lg font-medium transition hover:bg-slate-800 hover:text-primary"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
