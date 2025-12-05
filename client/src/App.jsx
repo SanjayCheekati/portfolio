@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { FiMenu, FiGithub, FiLinkedin, FiMail, FiInstagram, FiMapPin } from 'react-icons/fi'
+import { Analytics } from '@vercel/analytics/react'
 import LoadingSpinner from './components/LoadingSpinner'
 import MobileMenu from './components/MobileMenu'
 import Hero from './components/Hero'
@@ -270,6 +271,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
     </Suspense>
   )
