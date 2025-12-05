@@ -63,7 +63,7 @@ export default function Hero() {
             </h1>
             
             {/* Typing Animation */}
-            <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-6 h-16">
+            <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-6 h-16" role="doc-subtitle">
               <TypeAnimation
                 sequence={[
                   'Full-Stack Development 💻',
@@ -84,7 +84,7 @@ export default function Hero() {
 
             <motion.p className="text-lg text-slate-300 max-w-2xl mb-8">
               Computer Science Engineering student specializing in MERN stack development and machine learning. 
-              Building robust, scalable solutions with clean code and modern architectures.
+              Building robust, scalable solutions with clean code and modern architectures. Actively seeking SDE roles and internship opportunities.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -95,9 +95,10 @@ export default function Hero() {
                 className="group px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-black font-bold shadow-2xl"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Download Sanjay Cheekati's Resume PDF"
               >
                 <span className="flex items-center gap-2">
-                  <FiDownload className="text-xl" /> Download Resume
+                  <FiDownload className="text-xl" aria-hidden="true" /> Download Resume
                 </span>
               </motion.a>
               
@@ -108,9 +109,10 @@ export default function Hero() {
                 className="px-8 py-4 rounded-xl border-2 border-primary/50 bg-primary/5 backdrop-blur-sm text-primary font-bold"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
+                aria-label="Visit Sanjay Cheekati's LinkedIn Profile"
               >
                 <span className="flex items-center gap-2">
-                  <FiLinkedin className="text-xl" /> LinkedIn
+                  <FiLinkedin className="text-xl" aria-hidden="true" /> LinkedIn
                 </span>
               </motion.a>
             </div>

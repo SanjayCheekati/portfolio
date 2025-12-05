@@ -48,23 +48,27 @@ export default function App() {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.6 }}
+          role="banner"
         >
           <motion.div
             className="text-xl font-semibold cursor-pointer"
             whileHover={{ scale: 1.05, color: '#8b5cf6' }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            role="heading"
+            aria-level="1"
           >
             SanjayCheekati<span className="text-primary">.dev</span>
           </motion.div>
           
           {/* Desktop Navigation */}
-          <nav className="space-x-6 hidden md:block">
+          <nav className="space-x-6 hidden md:block" role="navigation" aria-label="Main navigation">
             {['Profile', 'Skills', 'Projects', 'Achievements', 'Journey', 'Contact'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 className="transition hover:text-primary"
                 whileHover={{ y: -2 }}
+                aria-label={`Navigate to ${item} section`}
               >
                 {item}
               </motion.a>
@@ -75,18 +79,21 @@ export default function App() {
           <button
             className="md:hidden p-2 rounded-lg hover:bg-slate-800 transition"
             onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open menu"
+            aria-label="Open navigation menu"
+            aria-expanded={isMobileMenuOpen}
           >
-            <FiMenu className="text-2xl" />
+            <FiMenu className="text-2xl" aria-hidden="true" />
           </button>
         </motion.header>
 
-      <main className="pt-24 relative z-10">
+      <main className="pt-24 relative z-10" role="main">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
+          role="region"
+          aria-label="Introduction"
         >
           <Hero />
         </motion.div>
@@ -98,6 +105,7 @@ export default function App() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
+          aria-labelledby="profile-heading"
         >
           <ProfileSummary />
         </motion.section>
@@ -110,8 +118,10 @@ export default function App() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
+          aria-labelledby="skills-heading"
         >
           <motion.h2
+            id="skills-heading"
             className="text-3xl font-bold mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,6 +140,7 @@ export default function App() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
+          aria-labelledby="projects-heading"
         >
           <Projects />
         </motion.section>
@@ -141,6 +152,7 @@ export default function App() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
+          aria-labelledby="achievements-heading"
         >
           <Achievements />
         </motion.section>
@@ -171,7 +183,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-12 border-t text-slate-400 border-slate-800 bg-slate-900/50">
+      <footer className="py-12 border-t text-slate-400 border-slate-800 bg-slate-900/50" role="contentinfo">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* About */}
@@ -180,32 +192,38 @@ export default function App() {
                 Sanjay Cheekati
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Software Development Engineer | MERN Stack & Machine Learning | Building scalable solutions with clean code | Available January 2026
+                Software Development Engineer | MERN Stack & Machine Learning | Building scalable solutions with clean code | Available January 2026 | Job seeker for SDE roles
               </p>
               <div className="flex items-center gap-2 text-sm text-slate-400">
-                <FiMapPin className="text-cyan-400" />
-                <span>Hyderabad, India</span>
+                <FiMapPin className="text-cyan-400" aria-hidden="true" />
+                <span>Hyderabad, Telangana, India</span>
               </div>
             </div>
 
             {/* Quick Links */}
-            <div>
+            <nav aria-label="Footer navigation">
               <h3 className="font-bold text-lg mb-4 text-white">Quick Links</h3>
               <div className="space-y-2 text-sm">
-                <a href="#profile" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group">
-                  <span className="group-hover:translate-x-1 transition-transform">→</span> About Me
+                <a href="#profile" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Navigate to About section">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> About Me
                 </a>
-                <a href="#skills" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group">
-                  <span className="group-hover:translate-x-1 transition-transform">→</span> Skills
+                <a href="#skills" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Navigate to Skills section">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Skills & Technologies
                 </a>
-                <a href="#projects" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group">
-                  <span className="group-hover:translate-x-1 transition-transform">→</span> Projects
+                <a href="#projects" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View software development projects">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Projects & Portfolio
                 </a>
-                <a href="#contact" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group">
-                  <span className="group-hover:translate-x-1 transition-transform">→</span> Contact
+                <a href="#achievements" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View achievements and certifications">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Achievements
+                </a>
+                <a href="#journey" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View education and experience timeline">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Education & Journey
+                </a>
+                <a href="#contact" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Contact for job opportunities">
+                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Contact & Hire
                 </a>
               </div>
-            </div>
+            </nav>
 
             {/* Social & Contact */}
             <div>
@@ -217,9 +235,9 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
                   whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="GitHub"
+                  aria-label="Visit Sanjay Cheekati's GitHub profile"
                 >
-                  <FiGithub className="text-lg" />
+                  <FiGithub className="text-lg" aria-hidden="true" />
                 </motion.a>
                 <motion.a
                   href="https://www.linkedin.com/in/sanjaycheekati/"
@@ -227,24 +245,25 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300"
                   whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="LinkedIn"
+                  aria-label="Visit Sanjay Cheekati's LinkedIn profile for job opportunities"
                 >
-                  <FiLinkedin className="text-lg" />
+                  <FiLinkedin className="text-lg" aria-hidden="true" />
                 </motion.a>
                 <motion.a
                   href="mailto:sanjaycheekati83@gmail.com"
                   className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-red-500/50 transition-all duration-300"
                   whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="Email"
+                  aria-label="Send email to Sanjay Cheekati"
                 >
-                  <FiMail className="text-lg" />
+                  <FiMail className="text-lg" aria-hidden="true" />
                 </motion.a>
               </div>
               <a 
                 href="mailto:sanjaycheekati83@gmail.com"
                 className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition"
+                aria-label="Email sanjaycheekati83@gmail.com"
               >
-                <FiMail className="text-cyan-400" />
+                <FiMail className="text-cyan-400" aria-hidden="true" />
                 sanjaycheekati83@gmail.com
               </a>
             </div>
@@ -255,7 +274,7 @@ export default function App() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
               <p>© {new Date().getFullYear()} Cheekati Sanjay Goud. All rights reserved.</p>
               <p className="flex items-center gap-2">
-                Built with <span className="text-red-500">❤️</span> patience <span className="text-yellow-400">😂</span> using React, Node.js & Tailwind
+                Built with <span className="text-red-500" role="img" aria-label="heart">❤️</span> patience <span className="text-yellow-400" role="img" aria-label="laughing">😂</span> using React, Node.js & Tailwind CSS
               </p>
             </div>
           </div>

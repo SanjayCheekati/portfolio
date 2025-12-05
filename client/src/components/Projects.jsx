@@ -45,19 +45,21 @@ export default function Projects() {
           <motion.div
             className="inline-block px-5 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 rounded-full text-sm text-cyan-300 font-bold mb-5"
             whileHover={{ scale: 1.05 }}
+            role="status"
+            aria-label="Projects section"
           >
-            <FiCode className="inline mr-2" />
+            <FiCode className="inline mr-2" aria-hidden="true" />
             MY PROJECTS
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 id="projects-heading" className="text-4xl md:text-5xl font-black mb-4">
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
               Featured Work
             </span>
           </h2>
           
           <p className="text-slate-300 text-base max-w-2xl mx-auto px-4">
-            Innovative solutions combining modern technology with practical applications
+            Innovative solutions combining modern technology with practical applications. Software development projects showcasing MERN stack, machine learning, and full-stack expertise.
           </p>
         </motion.div>
 
@@ -67,6 +69,8 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          role="tablist"
+          aria-label="Project category filters"
         >
           {categories.map((cat) => (
             <motion.button
@@ -79,6 +83,9 @@ export default function Projects() {
               }`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              role="tab"
+              aria-selected={filter === cat}
+              aria-label={`Filter projects by ${cat}`}
             >
               {cat}
             </motion.button>
@@ -119,6 +126,10 @@ export default function Projects() {
                   className="group relative h-full bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 cursor-pointer shadow-lg flex flex-col"
                   onClick={() => setSelectedProject(project)}
                   whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(6, 182, 212, 0.15)' }}
+                  role="article"
+                  aria-label={`${project.title} project card`}
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && setSelectedProject(project)}
                 >
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4 z-20">
@@ -145,6 +156,8 @@ export default function Projects() {
                       className="text-7xl"
                       whileHover={{ scale: 1.2, rotate: 10 }}
                       transition={{ type: 'spring', stiffness: 300 }}
+                      role="img"
+                      aria-label={`${project.title} project illustration - ${project.status === 'Live' ? 'Live and deployed' : project.status === 'Ongoing' ? 'Under active development' : 'Completed project'}`}
                     >
                       {project.status === 'Live' ? '🚀' : project.status === 'Ongoing' ? '⚡' : '✨'}
                     </motion.div>
