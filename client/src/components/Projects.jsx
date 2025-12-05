@@ -203,6 +203,10 @@ export default function Projects() {
                       {project.desc}
                     </p>
 
+                    <p className="text-sm text-slate-300 mt-2 mb-4 leading-relaxed line-clamp-2 flex-shrink-0">
+                      A brief summary of this project goes here. Describe what the project does, what problem it solves, and which tech stack it uses. Keep it short, clear, and focused on MERN or AI/ML.
+                    </p>
+
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-4 flex-shrink-0">
                       {project.tech.slice(0, 3).map((tech, i) => (
