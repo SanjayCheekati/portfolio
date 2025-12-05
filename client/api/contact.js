@@ -59,7 +59,7 @@ export default async function handler(req, res) {
       
       const { data, error } = await resend.emails.send({
         from: 'Portfolio Contact <onboarding@resend.dev>',
-        to: 'sanjaycheekati83@gmail.com',
+        to: 'sanjaycheekati@gmail.com',
         replyTo: email,
         subject: `New Contact Form Submission from ${name}`,
         html: `
