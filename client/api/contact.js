@@ -58,8 +58,8 @@ export default async function handler(req, res) {
       const resend = new Resend(process.env.RESEND_API_KEY)
       
       const { data, error } = await resend.emails.send({
-        from: 'Portfolio Contact <contact@sanjaycheekati.dev>',
-        to: 'sanjaycheekati83@gmail.com',
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: 'sanjaycheekati@gmail.com',
         replyTo: email,
         subject: `New Contact Form Submission from ${name}`,
         html: `
