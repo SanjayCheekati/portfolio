@@ -99,6 +99,70 @@ A modern, interactive portfolio website built with React and cutting-edge web te
    npm run dev
    ```
 
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## 🌐 Vercel Deployment
+
+This project is configured for seamless deployment on Vercel.
+
+### Quick Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SanjayCheekati/portfolio)
+
+### Manual Deployment Steps
+
+1. **Via GitHub (Recommended)**
+   - Go to [vercel.com](https://vercel.com) and sign in
+   - Click "Add New Project"
+   - Import your GitHub repository `SanjayCheekati/portfolio`
+   - Vercel automatically detects the configuration from `vercel.json`
+   - Click "Deploy" - no configuration needed!
+
+2. **Via Vercel CLI**
+   ```bash
+   # Install Vercel CLI globally
+   npm i -g vercel
+   
+   # Deploy from project root
+   cd portfolio
+   vercel
+   
+   # Follow the prompts
+   ```
+
+### Vercel Configuration
+
+The `vercel.json` at the project root includes:
+- ✅ **Build Command**: `cd client && npm install && npm run build`
+- ✅ **Output Directory**: `client/dist`
+- ✅ **Framework Detection**: Vite
+- ✅ **SPA Routing**: Automatic rewrites for client-side routing
+- ✅ **Asset Caching**: Optimized cache headers for `/assets/*`
+
+### Environment Variables
+
+If you need environment variables:
+1. Go to your Vercel project dashboard
+2. Navigate to Settings → Environment Variables
+3. Add variables for Production, Preview, and Development environments
+4. Redeploy for changes to take effect
+
+Example `.env` file in `client/` directory:
+```env
+VITE_API_URL=your_api_url
+VITE_ANALYTICS_ID=your_analytics_id
+```
+
 4. **Open in browser**
    ```
    http://localhost:5173

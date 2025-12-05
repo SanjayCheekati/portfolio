@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website for Sanjay Cheekati",
+  "author": "Cheekati Sanjay Goud <sanjaycheekati83@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm install && npm run build",
+    "preview": "cd client && npm run preview"
+  }
+}
