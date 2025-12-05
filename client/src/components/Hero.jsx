@@ -55,25 +55,21 @@ export default function Hero() {
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
               <motion.span className="block bg-gradient-to-r from-primary via-cyan-400 to-accent bg-clip-text text-transparent">
-                Sanjay Cheekati — Full Stack Developer specializing in MERN & AI/ML
+                Sanjay Cheekati
               </motion.span>
             </h1>
-
-            <p className="text-lg md:text-xl text-slate-200 max-w-3xl mb-6 leading-relaxed">
-              I am a BTech 4th-year Full Stack Developer focused on MERN and AI/ML projects. I build real-world applications including BERT-based toxicity detection, encryption tools, and advanced React/Node systems. You can explore all my latest work on my GitHub: <a href="https://github.com/SanjayCheekati" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">github.com/SanjayCheekati</a>.
-            </p>
             
             {/* Typing Animation */}
-            <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-6 h-16" role="doc-subtitle">
+            <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-8 h-16" role="doc-subtitle">
               <TypeAnimation
                 sequence={[
-                  'Full-Stack Development 💻',
+                  'Full Stack Developer 💻',
                   2000,
-                  'Machine Learning Solutions 🤖',
+                  'MERN Specialist 🚀',
                   2000,
-                  'Scalable Web Applications 🚀',
+                  'AI/ML Engineer 🤖',
                   2000,
-                  'Algorithm Optimization ⚡',
+                  'Open Source Contributor ⚡',
                   2000,
                 ]}
                 wrapper="span"
@@ -82,11 +78,6 @@ export default function Hero() {
                 className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent"
               />
             </div>
-
-            <motion.p className="text-lg text-slate-300 max-w-2xl mb-8">
-              Computer Science Engineering student specializing in MERN stack development and machine learning. 
-              Building robust, scalable solutions with clean code and modern architectures. Actively seeking SDE roles and internship opportunities.
-            </motion.p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-8">
