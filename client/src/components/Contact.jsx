@@ -41,13 +41,16 @@ export default function Contact() {
     setStatus('sending')
     try {
       // Vercel serverless function endpoint
-      await axios.post('/api/contact', form)
+      const response = await axios.post('/api/contact', form)
       setStatus('sent')
       setForm({ name: '', email: '', message: '' })
       setErrors({})
       setTimeout(() => setStatus(null), 5000)
     } catch (err) {
       console.error('Contact form error:', err)
+      console.error('Error response:', err.response?.data)
+      const errorMsg = err.response?.data?.error || 'Unknown error occurred'
+      alert(`ERROR: ${errorMsg}\n\nCheck browser console for details`)
       setStatus('error')
       setTimeout(() => setStatus(null), 5000)
     }
