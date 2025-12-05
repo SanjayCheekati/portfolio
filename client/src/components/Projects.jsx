@@ -113,9 +113,10 @@ export default function Projects() {
                 glarePosition="all"
                 glareBorderRadius="20px"
                 scale={1.02}
+                className="h-full"
               >
                 <motion.div
-                  className="group relative h-full bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 cursor-pointer shadow-lg"
+                  className="group relative h-full bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 cursor-pointer shadow-lg flex flex-col"
                   onClick={() => setSelectedProject(project)}
                   whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(6, 182, 212, 0.15)' }}
                 >
@@ -139,7 +140,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Project Icon/Thumbnail */}
-                  <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
+                  <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden flex-shrink-0">
                     <motion.div
                       className="text-7xl"
                       whileHover={{ scale: 1.2, rotate: 10 }}
@@ -173,9 +174,9 @@ export default function Projects() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-5 relative z-10">
+                  <div className="p-5 relative z-10 flex-1 flex flex-col">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 flex-1 pr-2">
+                      <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors duration-300 flex-1 pr-2 line-clamp-2">
                         {project.title}
                       </h3>
                       {project.year && (
@@ -185,12 +186,12 @@ export default function Projects() {
                       )}
                     </div>
                     
-                    <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-2">
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-shrink-0">
                       {project.desc}
                     </p>
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4 flex-shrink-0">
                       {project.tech.slice(0, 3).map((tech, i) => (
                         <span
                           key={i}
@@ -207,7 +208,7 @@ export default function Projects() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-700/50 mt-auto">
                       <motion.button
                         className="text-cyan-400 font-bold text-sm flex items-center gap-2 group/btn"
                         whileHover={{ x: 3 }}
