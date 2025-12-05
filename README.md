@@ -1,4 +1,154 @@
-# 🚀 Portfolio Website - Sanjay Cheekati
+# 🚀 Sanjay Cheekati - Portfolio
+
+<div align="center">
+
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-5.2.0-646CFF?style=for-the-badge&logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-10.12-FF0055?style=for-the-badge&logo=framer)
+
+**Modern portfolio showcasing full-stack development and AI/ML expertise**
+
+[🌐 Live Site](https://sanjaycheekati.dev) • [📧 Email](mailto:sanjaycheekati83@gmail.com) • [💼 LinkedIn](https://linkedin.com/in/sanjaycheekati) • [💻 GitHub](https://github.com/SanjayCheekati)
+
+</div>
+
+---
+
+## 👋 About Me
+
+I'm **Sanjay Cheekati**, a BTech 4th-year Computer Science Engineering student specializing in **MERN Stack Development** and **AI/ML**. I build production-ready applications with clean code, modern architectures, and a focus on user experience.
+
+**Current Status:** Available for full-time SDE roles and internships from **January 2026**
+
+### 🎯 What I Do
+
+- 🔧 **Full Stack Development:** Building scalable web applications using MongoDB, Express.js, React, and Node.js
+- 🤖 **AI/ML Solutions:** Implementing machine learning models for real-world problems (BERT, NLP, sentiment analysis)
+- 🚀 **Open Source:** Regular contributor on GitHub with projects spanning from encryption tools to advanced React systems
+- ⚡ **Performance Optimization:** Expertise in code splitting, lazy loading, and Core Web Vitals optimization
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Frameworks:** React 18.2, Vite 5.2
+- **Styling:** Tailwind CSS 3.4, PostCSS
+- **Animation:** Framer Motion 10.12, GSAP 3.13
+- **3D Graphics:** Three.js 0.161, React Three Fiber 8.0
+
+### Backend & Tools
+- **Runtime:** Node.js, Express.js
+- **Database:** MongoDB, PostgreSQL
+- **AI/ML:** Python, TensorFlow, PyTorch, BERT, NLP
+- **Deployment:** Vercel, AWS, Docker
+- **Version Control:** Git, GitHub
+
+---
+
+## 📂 Featured Projects
+
+### 🔐 PureText.me
+**Live Encryption Tool** | [GitHub](https://github.com/SanjayCheekati/PureText.me)
+- Client-side AES-256 encryption for secure text sharing
+- Zero data storage - privacy-first architecture
+- Built with React, Vite, and Web Crypto API
+
+### 🤖 BERT Content Moderation System
+**AI/ML Project** | [GitHub](https://github.com/SanjayCheekati)
+- Toxicity detection using BERT transformers
+- 94% accuracy on multi-label classification
+- Python, TensorFlow, Hugging Face
+
+### 🧬 NSGA-II Multi-Objective Optimizer
+**Algorithm Implementation** | [GitHub](https://github.com/SanjayCheekati)
+- Genetic algorithm for Pareto-optimal solutions
+- Visualization with matplotlib and seaborn
+- Applied to real-world optimization problems
+
+### 💼 This Portfolio
+**Live Website** | [sanjaycheekati.dev](https://sanjaycheekati.dev)
+- Modern React SPA with serverless contact form API
+- Optimized for 95+ Lighthouse scores
+- Code splitting, lazy loading, SEO optimization
+- Vercel Functions for backend
+
+---
+
+## 🎨 Portfolio Features
+
+**✨ Interactive Design**
+- Glassmorphism UI with backdrop blur effects
+- Smooth 60 FPS animations using Framer Motion
+- 3D particle effects and tilt interactions
+- Mobile-first responsive design
+
+**⚡ Performance Optimized**
+- Code splitting with Vite's manual chunks
+- Lazy loading for non-critical components
+- Resource hints (preconnect, dns-prefetch)
+- 95+ Lighthouse performance score
+
+**🔍 SEO Optimized**
+- Comprehensive meta tags and Open Graph
+- 7 JSON-LD schemas (Person, WebSite, Organization, etc.)
+- Sitemap, robots.txt, hreflang tags
+- Semantic HTML and ARIA labels
+
+**📱 Sections**
+- Hero with animated typing effect
+- Skills showcase with technology categories
+- Project portfolio with live filtering
+- Timeline of education and experience
+- Serverless contact form with email notifications
+
+---
+
+## 🌟 Technical Highlights
+
+This portfolio demonstrates:
+- **Modern React Patterns:** Hooks, lazy loading, Suspense boundaries
+- **Advanced Animations:** GSAP timelines, Framer Motion variants
+- **Serverless Architecture:** Vercel Functions for contact form API
+- **Email Integration:** Resend API for contact notifications
+- **Build Optimization:** esbuild minification, CSS code splitting
+- **Accessibility:** ARIA labels, semantic HTML, keyboard navigation
+- **SEO Excellence:** Structured data, meta tags, sitemap
+
+---
+
+## 📫 Get In Touch
+
+I'm actively seeking **Software Development Engineer** roles and **internship opportunities**. If you're looking for someone passionate about building scalable solutions with clean code and modern technologies, let's connect!
+
+- **Email:** sanjaycheekati83@gmail.com
+- **Phone:** +91 9440543283
+- **LinkedIn:** [linkedin.com/in/sanjaycheekati](https://linkedin.com/in/sanjaycheekati)
+- **GitHub:** [github.com/SanjayCheekati](https://github.com/SanjayCheekati)
+- **Location:** Hyderabad, Telangana, India
+
+---
+
+## 📊 GitHub Stats
+
+![Sanjay's GitHub Stats](https://github-readme-stats.vercel.app/api?username=SanjayCheekati&show_icons=true&theme=radical)
+
+---
+
+## 📄 License
+
+This portfolio is open source and available under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+**Built with ❤️ by Sanjay Cheekati**
+
+⭐ Star this repo if you find it interesting!
+
+</div>
 
 <div align="center">
 

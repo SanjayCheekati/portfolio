@@ -1,6 +1,7 @@
 {
   "name": "portfolio-client",
   "version": "1.0.0",
+  "type": "module",
   "description": "Modern portfolio website showcasing full-stack development skills with React, Vite, and Tailwind CSS",
   "author": "Cheekati Sanjay Goud <sanjaycheekati83@gmail.com>",
   "license": "MIT",
