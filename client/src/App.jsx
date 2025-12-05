@@ -5,14 +5,14 @@ import { Analytics } from '@vercel/analytics/react'
 import LoadingSpinner from './components/LoadingSpinner'
 import MobileMenu from './components/MobileMenu'
 import Hero from './components/Hero'
-import ProfileSummary from './components/ProfileSummary'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Achievements from './components/Achievements'
-import Contact from './components/Contact'
-import Timeline from './components/Timeline'
 
-// Lazy load only non-critical components
+// Lazy load non-critical components for better performance
+const ProfileSummary = lazy(() => import('./components/ProfileSummary'))
+const Skills = lazy(() => import('./components/Skills'))
+const Projects = lazy(() => import('./components/Projects'))
+const Achievements = lazy(() => import('./components/Achievements'))
+const Contact = lazy(() => import('./components/Contact'))
+const Timeline = lazy(() => import('./components/Timeline'))
 const ParticlesBackground = lazy(() => import('./components/ParticlesBackground'))
 
 export default function App() {
@@ -99,87 +99,99 @@ export default function App() {
         </motion.div>
 
         {/* Profile Summary Section */}
-        <motion.section
-          id="profile"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="profile-heading"
-        >
-          <ProfileSummary />
-        </motion.section>
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="profile"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            aria-labelledby="profile-heading"
+          >
+            <ProfileSummary />
+          </motion.section>
+        </Suspense>
 
         {/* Skills Section */}
-        <motion.section
-          id="skills"
-          className="container mx-auto px-6 py-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="skills-heading"
-        >
-          <motion.h2
-            id="skills-heading"
-            className="text-3xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="skills"
+            className="container mx-auto px-6 py-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            aria-labelledby="skills-heading"
           >
-            Skills & Expertise
-          </motion.h2>
-          <Skills />
-        </motion.section>
+            <motion.h2
+              id="skills-heading"
+              className="text-3xl font-bold mb-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Skills & Expertise
+            </motion.h2>
+            <Skills />
+          </motion.section>
+        </Suspense>
 
         {/* Projects Section */}
-        <motion.section
-          id="projects"
-          className="container mx-auto px-6 py-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="projects-heading"
-        >
-          <Projects />
-        </motion.section>
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="projects"
+            className="container mx-auto px-6 py-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            aria-labelledby="projects-heading"
+          >
+            <Projects />
+          </motion.section>
+        </Suspense>
 
         {/* Achievements Section */}
-        <motion.section
-          id="achievements"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          aria-labelledby="achievements-heading"
-        >
-          <Achievements />
-        </motion.section>
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="achievements"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            aria-labelledby="achievements-heading"
+          >
+            <Achievements />
+          </motion.section>
+        </Suspense>
 
         {/* Timeline Section */}
-        <motion.section
-          id="journey"
-          className="container mx-auto px-6 py-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <Timeline />
-        </motion.section>
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="journey"
+            className="container mx-auto px-6 py-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <Timeline />
+          </motion.section>
+        </Suspense>
 
         {/* Contact Section */}
-        <motion.section
-          id="contact"
-          className="container mx-auto px-6 py-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <Contact />
-        </motion.section>
+        <Suspense fallback={<div className="h-96" />}>
+          <motion.section
+            id="contact"
+            className="container mx-auto px-6 py-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <Contact />
+          </motion.section>
+        </Suspense>
       </main>
 
       {/* Footer */}
