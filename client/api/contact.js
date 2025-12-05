@@ -45,11 +45,19 @@ export default async function handler(req, res) {
     console.log('Contact form submission:', { name, email, message, timestamp: new Date().toISOString() })
 
     // Send email notification using Resend
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set in environment variables')
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Message received but email notification failed. API key not configured.' 
+      })
+    }
+
     try {
-      const { Resend } = require('resend')
+      const { Resend } = await import('resend')
       const resend = new Resend(process.env.RESEND_API_KEY)
       
-      await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from: 'Portfolio Contact <onboarding@resend.dev>',
         to: 'sanjaycheekati83@gmail.com',
         replyTo: email,
@@ -64,9 +72,22 @@ export default async function handler(req, res) {
           <p><small>Sent from sanjaycheekati.dev contact form</small></p>
         `
       })
+
+      if (error) {
+        console.error('Resend API error:', error)
+        return res.status(200).json({ 
+          success: true, 
+          message: 'Message received but email notification failed. Check Vercel logs.' 
+        })
+      }
+
+      console.log('Email sent successfully:', data)
     } catch (emailError) {
       console.error('Email sending failed:', emailError)
-      // Continue even if email fails - submission is still logged
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Message received but email notification failed. Error: ' + emailError.message
+      })
     }
 
     return res.status(200).json({ 
