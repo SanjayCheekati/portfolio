@@ -54,11 +54,8 @@ export default function Hero() {
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-              <motion.span className="block text-slate-400 text-2xl md:text-3xl font-light mb-2">
-                I'm
-              </motion.span>
               <motion.span className="block bg-gradient-to-r from-primary via-cyan-400 to-accent bg-clip-text text-transparent">
-                Sanjay Cheekati
+                Sanjay Cheekati — Full Stack Developer specializing in MERN & AI/ML
               </motion.span>
             </h1>
             
