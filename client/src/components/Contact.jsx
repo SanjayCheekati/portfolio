@@ -40,8 +40,8 @@ export default function Contact() {
     
     setStatus('sending')
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-      await axios.post(`${apiUrl}/api/contact`, form)
+      // Vercel serverless function endpoint
+      await axios.post('/api/contact', form)
       setStatus('sent')
       setForm({ name: '', email: '', message: '' })
       setErrors({})
