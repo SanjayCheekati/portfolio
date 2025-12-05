@@ -44,25 +44,30 @@ export default async function handler(req, res) {
 
     console.log('Contact form submission:', { name, email, message, timestamp: new Date().toISOString() })
 
-    // Optional: Send email notification using Resend (recommended)
-    // Uncomment and add your Resend API key to use:
-    /*
-    const Resend = require('resend').Resend;
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    await resend.emails.send({
-      from: 'Portfolio Contact <noreply@sanjaycheekati.dev>',
-      to: 'sanjaycheekati83@gmail.com',
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New message from your portfolio</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `
-    });
-    */
+    // Send email notification using Resend
+    try {
+      const { Resend } = require('resend')
+      const resend = new Resend(process.env.RESEND_API_KEY)
+      
+      await resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: 'sanjaycheekati83@gmail.com',
+        replyTo: email,
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New message from your portfolio</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+          <hr />
+          <p><small>Sent from sanjaycheekati.dev contact form</small></p>
+        `
+      })
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError)
+      // Continue even if email fails - submission is still logged
+    }
 
     return res.status(200).json({ 
       success: true, 
