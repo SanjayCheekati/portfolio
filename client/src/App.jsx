@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
-import { FiMenu, FiGithub, FiLinkedin, FiMail, FiInstagram, FiMapPin } from 'react-icons/fi'
+import { FiMenu, FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi'
 import { Analytics } from '@vercel/analytics/react'
 import LoadingSpinner from './components/LoadingSpinner'
 import MobileMenu from './components/MobileMenu'
@@ -238,16 +238,6 @@ export default function App() {
                   aria-label="Email"
                 >
                   <FiMail className="text-lg" />
-                </motion.a>
-                <motion.a
-                  href="https://instagram.com/sanju.1xv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-pink-500/50 transition-all duration-300"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="Instagram"
-                >
-                  <FiInstagram className="text-lg" />
                 </motion.a>
               </div>
               <a 

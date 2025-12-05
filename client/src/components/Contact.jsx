@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
-import { FiMail, FiUser, FiMessageSquare, FiGithub, FiLinkedin, FiSend, FiInstagram } from 'react-icons/fi'
+import { FiMail, FiUser, FiMessageSquare, FiGithub, FiLinkedin, FiSend, FiPhone } from 'react-icons/fi'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -132,18 +132,16 @@ export default function Contact() {
           </motion.a>
 
           <motion.a
-            href="https://instagram.com/sanju.1xv"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+919440543283"
             className="flex items-center gap-4 bg-slate-800 p-4 rounded-xl hover:bg-slate-750 transition group"
             whileHover={{ x: 5 }}
           >
-            <div className="p-3 bg-pink-500/20 rounded-lg group-hover:bg-pink-500 group-hover:text-white transition">
-              <FiInstagram className="text-xl" />
+            <div className="p-3 bg-green-500/20 rounded-lg group-hover:bg-green-500 group-hover:text-white transition">
+              <FiPhone className="text-xl" />
             </div>
             <div>
-              <p className="text-sm text-slate-400">Follow on Instagram</p>
-              <p className="font-medium">@sanju.1xv</p>
+              <p className="text-sm text-slate-400">Call Me</p>
+              <p className="font-medium">+91 9440543283</p>
             </div>
           </motion.a>
         </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiDownload, FiGithub, FiLinkedin, FiMail, FiMapPin, FiInstagram, FiCode } from 'react-icons/fi'
+import { FiDownload, FiGithub, FiLinkedin, FiMail, FiMapPin, FiCode } from 'react-icons/fi'
 import { SiLeetcode } from 'react-icons/si'
 
 export default function ProfileSummary() {
@@ -62,8 +62,7 @@ export default function ProfileSummary() {
                     { icon: FiGithub, href: 'https://github.com/SanjayCheekati/', label: 'GitHub' },
                     { icon: FiLinkedin, href: 'https://www.linkedin.com/in/sanjaycheekati/', label: 'LinkedIn' },
                     { icon: SiLeetcode, href: 'https://leetcode.com/u/sanjaycheekati/', label: 'LeetCode' },
-                    { icon: FiMail, href: 'mailto:sanjaycheekati83@gmail.com', label: 'Email' },
-                    { icon: FiInstagram, href: 'https://instagram.com/sanju.1xv', label: 'Instagram' }
+                    { icon: FiMail, href: 'mailto:sanjaycheekati83@gmail.com', label: 'Email' }
                   ].map((social, i) => (
                     <motion.a
                       key={i}

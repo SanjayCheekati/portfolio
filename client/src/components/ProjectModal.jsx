@@ -42,9 +42,10 @@ export default function ProjectModal({ project, onClose }) {
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 hover:bg-slate-700 rounded-full transition"
+            className="absolute top-4 right-4 p-3 hover:bg-slate-700 rounded-full transition z-50 touch-manipulation"
+            aria-label="Close modal"
           >
-            <FiX className="text-xl" />
+            <FiX className="text-2xl" />
           </button>
 
           <div className="mb-4">
