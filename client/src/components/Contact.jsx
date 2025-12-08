@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Card, CardBody, Input, Textarea, Button, Link } from '@nextui-org/react'
 import axios from 'axios'
 import { FiMail, FiUser, FiMessageSquare, FiGithub, FiLinkedin, FiSend, FiPhone } from 'react-icons/fi'
+import { SiLeetcode } from 'react-icons/si'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -99,6 +100,18 @@ export default function Contact() {
               <div>
                 <p className="text-sm text-default-500">View GitHub</p>
                 <p className="font-medium">github.com/SanjayCheekati</p>
+              </div>
+            </CardBody>
+          </Card>
+
+          <Card isPressable as={Link} isExternal href="https://leetcode.com/u/sanjaycheekati/" className="hover:scale-105 transition-transform">
+            <CardBody className="flex-row items-center gap-4">
+              <div className="p-3 bg-warning-50 rounded-lg">
+                <SiLeetcode className="text-xl text-warning" />
+              </div>
+              <div>
+                <p className="text-sm text-default-500">LeetCode Profile</p>
+                <p className="font-medium">leetcode.com/u/sanjaycheekati</p>
               </div>
             </CardBody>
           </Card>

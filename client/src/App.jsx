@@ -14,16 +14,28 @@ const Timeline = lazy(() => import('./components/Timeline'))
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(() => {
+    // Check if user has a saved preference, otherwise default to dark
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme')
+      return saved ? saved === 'dark' : true
+    }
+    return true
+  })
 
   useEffect(() => {
-    // Set dark theme as default
-    document.documentElement.classList.add('dark')
-  }, [])
+    // Apply theme on mount and when it changes
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [isDark])
 
   const toggleTheme = () => {
     setIsDark(!isDark)
-    document.documentElement.classList.toggle('dark')
   }
 
   const menuItems = [
@@ -59,7 +71,7 @@ export default function App() {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className="hidden sm:flex gap-6" justify="center">
+        <NavbarContent className="hidden sm:flex gap-4" justify="end">
           {menuItems.map((item) => (
             <NavbarItem key={item.name}>
               <Link color="foreground" href={item.href} className="text-sm font-medium">
@@ -67,9 +79,6 @@ export default function App() {
               </Link>
             </NavbarItem>
           ))}
-        </NavbarContent>
-
-        <NavbarContent justify="end">
           <NavbarItem>
             <Button
               isIconOnly

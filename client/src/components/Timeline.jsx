@@ -20,7 +20,7 @@ const timeline = [
     institution: 'Mahatma Gandhi Institute of Technology (MGIT), Hyderabad',
     desc: 'Pursuing Bachelor of Technology with focus on Full Stack Development and Machine Learning',
     highlights: [
-      'CGPA: 8.0',
+      'CGPA: 8.03',
       'Expected Graduation: June 2026',
       'Specialized in MERN Stack Development',
       'Machine Learning and AI coursework',
