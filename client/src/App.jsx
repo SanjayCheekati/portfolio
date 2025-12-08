@@ -127,7 +127,7 @@ export default function App() {
         {/* Skills Section */}
         <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
           <section id="skills" className="max-w-7xl mx-auto px-6 py-20">
-            <h2 className="text-4xl font-bold mb-12 text-center">Skills & Expertise</h2>
+            <h2 className="text-4xl font-bold mb-12 text-center text-primary">Skills & Expertise</h2>
             <Skills />
           </section>
         </Suspense>

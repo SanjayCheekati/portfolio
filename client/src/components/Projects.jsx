@@ -18,7 +18,7 @@ export default function Projects() {
   return (
     <div>
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">Featured Work</h2>
+        <h2 className="text-4xl font-bold mb-4 text-primary">Featured Work</h2>
         <p className="text-default-600 text-lg max-w-2xl mx-auto">
           Innovative solutions combining modern technology with practical applications
         </p>

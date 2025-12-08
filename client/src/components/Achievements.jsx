@@ -69,7 +69,7 @@ export default function Achievements() {
     <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         {/* Achievements Section */}
-        <h2 className="text-4xl font-bold mb-12 text-center">Achievements</h2>
+        <h2 className="text-4xl font-bold mb-12 text-center text-primary">Achievements</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {achievements.map((achievement, idx) => (
             <Card key={idx} className="hover:shadow-lg transition-shadow border-2 border-default-200">
@@ -86,7 +86,7 @@ export default function Achievements() {
 
         {/* Certifications Section */}
         <Divider className="my-12" />
-        <h2 className="text-4xl font-bold mb-12 text-center">Certifications</h2>
+        <h2 className="text-4xl font-bold mb-12 text-center text-primary">Certifications</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {certifications.map((cert, idx) => (
             <Card key={idx} className="hover:shadow-lg transition-shadow border-2 border-default-200">

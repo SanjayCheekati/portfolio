@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardBody, Chip } from '@nextui-org/react'
-import { FiMapPin, FiCode } from 'react-icons/fi'
+import { FiMapPin, FiCode, FiUser } from 'react-icons/fi'
 import { SiLeetcode } from 'react-icons/si'
 
 export default function ProfileSummary() {
@@ -12,20 +12,8 @@ export default function ProfileSummary() {
             <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
               {/* Profile Photo */}
               <div className="relative flex-shrink-0">
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center shadow-lg border-2 border-primary/20">
-                  <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="48" fill="url(#profileGrad)" opacity="0.2"/>
-                    <path d="M25 40 L25 55 L30 55 L30 75 L70 75 L70 55 L75 55 L75 40 Z" fill="currentColor" className="text-primary" opacity="0.8"/>
-                    <rect x="32" y="50" width="36" height="22" rx="2" fill="currentColor" className="text-secondary" opacity="0.6"/>
-                    <circle cx="40" cy="30" r="8" fill="currentColor" className="text-warning" opacity="0.7"/>
-                    <circle cx="60" cy="30" r="8" fill="currentColor" className="text-warning" opacity="0.7"/>
-                    <defs>
-                      <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.3" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center shadow-lg">
+                  <FiUser className="w-16 h-16 text-primary" />
                 </div>
                 <Chip color="success" size="sm" className="absolute -bottom-2 -right-2">
                   Open to work

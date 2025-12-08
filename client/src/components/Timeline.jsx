@@ -49,7 +49,7 @@ const timeline = [
 export default function Timeline() {
   return (
     <div>
-      <h2 className="text-4xl font-bold mb-12 text-center">Education & Journey</h2>
+      <h2 className="text-4xl font-bold mb-12 text-center text-primary">Education & Journey</h2>
       <div className="max-w-4xl mx-auto space-y-8">
         {timeline.map((item, idx) => (
           <Card key={idx} className="hover:shadow-lg transition-shadow">

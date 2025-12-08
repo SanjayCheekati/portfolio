@@ -57,7 +57,7 @@ export default function Contact() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold mb-4 text-center">Let's Connect</h2>
+      <h2 className="text-4xl font-bold mb-4 text-center text-primary">Let's Connect</h2>
       
       <p className="text-default-600 text-center mb-12 text-lg max-w-2xl mx-auto">
         Open to full-time SDE roles and internship opportunities starting January 2026. Let's discuss how I can contribute to your team.
