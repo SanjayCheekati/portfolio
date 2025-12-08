@@ -12,10 +12,8 @@ export default function ProfileSummary() {
             <div className="flex flex-col md:flex-row gap-8 items-center">
               {/* Profile Photo */}
               <div className="relative">
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary to-secondary p-1 shadow-lg">
-                  <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center text-4xl font-bold text-primary">
-                    CSG
-                  </div>
+                <div className="w-32 h-32 rounded-2xl bg-primary/10 flex items-center justify-center shadow-lg">
+                  <span className="text-6xl">👨‍💻</span>
                 </div>
                 <Chip color="success" size="sm" className="absolute -bottom-2 -right-2">
                   Open to work

@@ -4,19 +4,19 @@ import { Card, CardBody, Chip } from '@nextui-org/react'
 const skillCategories = [
   {
     category: 'Frontend',
-    skills: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'NextUI']
+    skills: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'NextUI', 'Vite']
   },
   {
     category: 'Backend',
-    skills: ['Node.js', 'Express', 'MongoDB', 'REST API']
+    skills: ['Node.js', 'Express', 'MongoDB', 'REST API', 'SQL']
   },
   {
     category: 'ML/AI',
-    skills: ['Python', 'TensorFlow', 'NLP', 'Machine Learning']
+    skills: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Machine Learning', 'Data Analysis']
   },
   {
-    category: 'Tools',
-    skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman']
+    category: 'Tools & DevOps',
+    skills: ['Git', 'GitHub', 'VS Code', 'Docker', 'Postman', 'Vercel']
   }
 ]
 

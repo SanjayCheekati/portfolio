@@ -129,7 +129,11 @@ export default function Contact() {
                 onChange={e => setForm({ ...form, name: e.target.value })}
                 isInvalid={!!errors.name}
                 errorMessage={errors.name}
-                startContent={<FiUser className="text-default-400" />}
+                startContent={
+                  <div className="pointer-events-none flex items-center">
+                    <FiUser className="text-xl text-primary" />
+                  </div>
+                }
                 isRequired
               />
 
@@ -141,7 +145,11 @@ export default function Contact() {
                 onChange={e => setForm({ ...form, email: e.target.value })}
                 isInvalid={!!errors.email}
                 errorMessage={errors.email}
-                startContent={<FiMail className="text-default-400" />}
+                startContent={
+                  <div className="pointer-events-none flex items-center">
+                    <FiMail className="text-xl text-primary" />
+                  </div>
+                }
                 isRequired
               />
 
@@ -153,7 +161,11 @@ export default function Contact() {
                 isInvalid={!!errors.message}
                 errorMessage={errors.message}
                 minRows={4}
-                startContent={<FiMessageSquare className="text-default-400 mt-3" />}
+                startContent={
+                  <div className="pointer-events-none flex items-start pt-3">
+                    <FiMessageSquare className="text-xl text-primary" />
+                  </div>
+                }
                 isRequired
               />
 

@@ -1,6 +1,6 @@
-import React, { useState, Suspense, lazy } from 'react'
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Spinner } from '@nextui-org/react'
-import { FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Spinner, Button } from '@nextui-org/react'
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiMoon, FiSun } from 'react-icons/fi'
 import { Analytics } from '@vercel/analytics/react'
 import Hero from './components/Hero'
 
@@ -14,6 +14,17 @@ const Timeline = lazy(() => import('./components/Timeline'))
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isDark, setIsDark] = useState(true)
+
+  useEffect(() => {
+    // Set dark theme as default
+    document.documentElement.classList.add('dark')
+  }, [])
+
+  const toggleTheme = () => {
+    setIsDark(!isDark)
+    document.documentElement.classList.toggle('dark')
+  }
 
   const menuItems = [
     { name: 'Profile', href: '#profile' },
@@ -56,6 +67,19 @@ export default function App() {
               </Link>
             </NavbarItem>
           ))}
+        </NavbarContent>
+
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <Button
+              isIconOnly
+              variant="light"
+              onPress={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <FiSun className="text-xl" /> : <FiMoon className="text-xl" />}
+            </Button>
+          </NavbarItem>
         </NavbarContent>
 
         <NavbarMenu>
