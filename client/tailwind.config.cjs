@@ -1,23 +1,33 @@
+const { nextui } = require("@nextui-org/react");
+
 module.exports = {
-  content: ['./index.html', './src/**/*.{js,jsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,jsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
+  ],
   theme: {
     extend: {
-      colors: {
-        primary: '#8b5cf6',    // Purple 500 - Professional, modern
-        accent: '#3b82f6',     // Blue 500 - Trust, tech
-        dark: '#0f172a',       // Slate 900
-        darker: '#020617',     // Slate 950
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      animation: {
-        'gradient-shift': 'gradient-shift 8s ease infinite',
-      },
-      keyframes: {
-        'gradient-shift': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
+    },
+  },
+  darkMode: "class",
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            background: "#FFFFFF",
+            foreground: "#11181C",
+            primary: {
+              DEFAULT: "#006FEE",
+              foreground: "#FFFFFF",
+            },
+          },
         },
       },
-    }
-  },
-  plugins: []
+    }),
+  ],
 }

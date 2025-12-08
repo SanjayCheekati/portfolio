@@ -1,168 +1,89 @@
-import React, { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-import { FiDownload, FiLinkedin, FiGithub, FiMail } from 'react-icons/fi'
-import { TypeAnimation } from 'react-type-animation'
-import gsap from 'gsap'
+import React from 'react'
+import { Button, Chip } from '@nextui-org/react'
+import { FiDownload, FiLinkedin, FiGithub } from 'react-icons/fi'
 
 export default function Hero() {
-  const floatingRef = useRef([])
-
-  useEffect(() => {
-    floatingRef.current.forEach((el, index) => {
-      if (el) {
-        gsap.to(el, {
-          y: -30,
-          duration: 2 + index * 0.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'power1.inOut',
-          delay: index * 0.2
-        })
-      }
-    })
-  }, [])
-
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 animate-gradient-shift" />
-      
-      <motion.div 
-        className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="min-h-[90vh] flex items-center bg-gradient-to-b from-default-50 to-white">
+      <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             {/* Status Badge */}
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/50 rounded-full text-sm mb-6 backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
+            <Chip 
+              color="success" 
+              variant="dot" 
+              className="mb-6"
             >
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <span className="font-medium">Available from January 2026</span>
-            </motion.div>
+              Available from January 2026
+            </Chip>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4">
-              <motion.span className="block bg-gradient-to-r from-primary via-cyan-400 to-accent bg-clip-text text-transparent">
-                Sanjay Cheekati
-              </motion.span>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+              Sanjay Cheekati
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">
+            <p className="text-xl md:text-2xl text-default-600 mb-6">
               Full Stack Developer specializing in MERN & AI/ML
             </p>
             
-            {/* Typing Animation */}
-            <div className="text-2xl md:text-4xl font-bold text-slate-200 mb-8 h-16" role="doc-subtitle">
-              <TypeAnimation
-                sequence={[
-                  'Building Production Apps 💻',
-                  2000,
-                  'MERN Stack Expert 🚀',
-                  2000,
-                  'AI/ML Solutions 🤖',
-                  2000,
-                  'Open Source Projects ⚡',
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-                className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent"
-              />
-            </div>
+            <p className="text-lg text-default-500 mb-8 max-w-2xl leading-relaxed">
+              Building scalable web applications with clean code and modern technologies. 
+              Passionate about creating exceptional user experiences and solving complex problems.
+            </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <motion.a
+            <div className="flex flex-wrap gap-4">
+              <Button
+                as="a"
                 href="/CHEEKATI_SANJAY_GOUD.pdf"
                 download
-                className="group px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-cyan-400 text-black font-bold shadow-2xl"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Download Sanjay Cheekati's Resume PDF"
+                color="primary"
+                size="lg"
+                startContent={<FiDownload />}
               >
-                <span className="flex items-center gap-2">
-                  <FiDownload className="text-xl" aria-hidden="true" /> Download Resume
-                </span>
-              </motion.a>
+                Download Resume
+              </Button>
               
-              <motion.a
+              <Button
+                as="a"
                 href="https://www.linkedin.com/in/sanjaycheekati/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-xl border-2 border-primary/50 bg-primary/5 backdrop-blur-sm text-primary font-bold"
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Visit Sanjay Cheekati's LinkedIn Profile"
+                variant="bordered"
+                size="lg"
+                startContent={<FiLinkedin />}
               >
-                <span className="flex items-center gap-2">
-                  <FiLinkedin className="text-xl" aria-hidden="true" /> LinkedIn
-                </span>
-              </motion.a>
-            </div>
-          </motion.div>
+                LinkedIn
+              </Button>
 
-          {/* Right Content - 3D Floating Element */}
-          <motion.div
-            className="relative lg:block hidden"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="relative w-full h-[600px] flex items-center justify-center">
-              {/* Center Avatar */}
-              <motion.div
-                className="relative z-10 w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-lg border border-primary/30 flex items-center justify-center shadow-2xl"
-                animate={{ rotateY: [0, 10, 0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity }}
+              <Button
+                as="a"
+                href="https://github.com/SanjayCheekati/"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="bordered"
+                size="lg"
+                startContent={<FiGithub />}
               >
-                <div className="text-9xl">👨‍💻</div>
-              </motion.div>
-
-              {/* Orbiting Icons - Fixed positioning to avoid overlap */}
-              {[
-                { icon: '⚛️', color: 'from-cyan-400 to-blue-500', angle: 0 },
-                { icon: '🚀', color: 'from-rose-400 to-pink-500', angle: 90 },
-                { icon: '💻', color: 'from-green-400 to-teal-500', angle: 180 },
-                { icon: '⚡', color: 'from-yellow-400 to-orange-500', angle: 270 },
-              ].map((item, index) => {
-                const radius = 220; // Distance from center
-                const angleRad = (item.angle * Math.PI) / 180;
-                const x = 50 + (radius / 6) * Math.cos(angleRad); // Percentage based positioning
-                const y = 50 + (radius / 6) * Math.sin(angleRad);
-                
-                return (
-                  <motion.div
-                    key={index}
-                    ref={el => floatingRef.current[index] = el}
-                    className={`absolute w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} backdrop-blur-lg flex items-center justify-center text-3xl shadow-2xl border border-white/20`}
-                    style={{
-                      top: `${y}%`,
-                      left: `${x}%`,
-                      transform: 'translate(-50%, -50%)'
-                    }}
-                    animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear', delay: index * 0.5 }}
-                    whileHover={{ scale: 1.2, zIndex: 20 }}
-                  >
-                    {item.icon}
-                  </motion.div>
-                );
-              })}
+                GitHub
+              </Button>
             </div>
-          </motion.div>
+          </div>
+
+          {/* Right Content - Simple Visual */}
+          <div className="hidden lg:flex items-center justify-center">
+            <div className="relative">
+              <div className="w-[400px] h-[400px] rounded-3xl bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center border-2 border-default-200">
+                <div className="text-center">
+                  <div className="text-8xl mb-4">👨‍💻</div>
+                  <div className="space-y-2">
+                    <p className="text-xl font-semibold">Software Engineer</p>
+                    <p className="text-default-500">MERN Stack | AI/ML</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

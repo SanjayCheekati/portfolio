@@ -1,299 +1,205 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
-import { FiMenu, FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi'
+import React, { useState, Suspense, lazy } from 'react'
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Spinner } from '@nextui-org/react'
+import { FiGithub, FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi'
 import { Analytics } from '@vercel/analytics/react'
-import LoadingSpinner from './components/LoadingSpinner'
-import MobileMenu from './components/MobileMenu'
 import Hero from './components/Hero'
 
-// Lazy load non-critical components for better performance
+// Lazy load sections
 const ProfileSummary = lazy(() => import('./components/ProfileSummary'))
 const Skills = lazy(() => import('./components/Skills'))
 const Projects = lazy(() => import('./components/Projects'))
 const Achievements = lazy(() => import('./components/Achievements'))
 const Contact = lazy(() => import('./components/Contact'))
 const Timeline = lazy(() => import('./components/Timeline'))
-const ParticlesBackground = lazy(() => import('./components/ParticlesBackground'))
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
+
+  const menuItems = [
+    { name: 'Profile', href: '#profile' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Achievements', href: '#achievements' },
+    { name: 'Journey', href: '#journey' },
+    { name: 'Contact', href: '#contact' }
+  ]
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <div className="min-h-screen overflow-x-hidden transition-colors duration-500 bg-gradient-to-b from-gray-900 via-slate-900 to-black text-slate-100">
-        {/* Scroll progress bar */}
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent z-50 origin-left"
-          style={{ scaleX }}
-        />
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <Navbar 
+        isBordered
+        isMenuOpen={isMobileMenuOpen}
+        onMenuOpenChange={setIsMobileMenuOpen}
+        classNames={{
+          wrapper: "max-w-7xl",
+          item: "data-[active=true]:font-semibold"
+        }}
+      >
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
+          <NavbarBrand>
+            <Link href="#" color="foreground" className="font-semibold text-xl">
+              SanjayCheekati<span className="text-primary">.dev</span>
+            </Link>
+          </NavbarBrand>
+        </NavbarContent>
 
-        {/* Particles background */}
-        <ParticlesBackground />
+        <NavbarContent className="hidden sm:flex gap-6" justify="center">
+          {menuItems.map((item) => (
+            <NavbarItem key={item.name}>
+              <Link color="foreground" href={item.href} className="text-sm font-medium">
+                {item.name}
+              </Link>
+            </NavbarItem>
+          ))}
+        </NavbarContent>
 
-        {/* Mobile Menu */}
-        <MobileMenu 
-          isOpen={isMobileMenuOpen} 
-          onClose={() => setIsMobileMenuOpen(false)}
-        />
-
-        {/* Header */}
-        <motion.header
-          className="fixed top-4 left-0 right-0 z-40 container mx-auto px-6 flex justify-between items-center backdrop-blur-md rounded-full py-3 bg-slate-900/70 shadow-lg"
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.6 }}
-          role="banner"
-        >
-          <motion.div
-            className="text-xl font-semibold cursor-pointer"
-            whileHover={{ scale: 1.05, color: '#8b5cf6' }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            role="heading"
-            aria-level="1"
-          >
-            SanjayCheekati<span className="text-primary">.dev</span>
-          </motion.div>
-          
-          {/* Desktop Navigation */}
-          <nav className="space-x-6 hidden md:block" role="navigation" aria-label="Main navigation">
-            {['Profile', 'Skills', 'Projects', 'Achievements', 'Journey', 'Contact'].map((item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="transition hover:text-primary"
-                whileHover={{ y: -2 }}
-                aria-label={`Navigate to ${item} section`}
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item.name}-${index}`}>
+              <Link
+                color="foreground"
+                className="w-full"
+                href={item.href}
+                size="lg"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
-                {item}
-              </motion.a>
-            ))}
-          </nav>
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
+      </Navbar>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-slate-800 transition"
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open navigation menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            <FiMenu className="text-2xl" aria-hidden="true" />
-          </button>
-        </motion.header>
-
-      <main className="pt-24 relative z-10" role="main">
+      <main>
         {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          role="region"
-          aria-label="Introduction"
-        >
-          <Hero />
-        </motion.div>
+        <Hero />
 
         {/* Profile Summary Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="profile"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            aria-labelledby="profile-heading"
-          >
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="profile">
             <ProfileSummary />
-          </motion.section>
+          </section>
         </Suspense>
 
         {/* Skills Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="skills"
-            className="container mx-auto px-6 py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            aria-labelledby="skills-heading"
-          >
-            <motion.h2
-              id="skills-heading"
-              className="text-3xl font-bold mb-12 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Skills & Expertise
-            </motion.h2>
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="skills" className="max-w-7xl mx-auto px-6 py-20">
+            <h2 className="text-4xl font-bold mb-12 text-center">Skills & Expertise</h2>
             <Skills />
-          </motion.section>
+          </section>
         </Suspense>
 
         {/* Projects Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="projects"
-            className="container mx-auto px-6 py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            aria-labelledby="projects-heading"
-          >
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="projects" className="max-w-7xl mx-auto px-6 py-20">
             <Projects />
-          </motion.section>
+          </section>
         </Suspense>
 
         {/* Achievements Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="achievements"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            aria-labelledby="achievements-heading"
-          >
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="achievements">
             <Achievements />
-          </motion.section>
+          </section>
         </Suspense>
 
         {/* Timeline Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="journey"
-            className="container mx-auto px-6 py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="journey" className="max-w-7xl mx-auto px-6 py-20">
             <Timeline />
-          </motion.section>
+          </section>
         </Suspense>
 
         {/* Contact Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <motion.section
-            id="contact"
-            className="container mx-auto px-6 py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
+        <Suspense fallback={<div className="flex justify-center py-20"><Spinner size="lg" /></div>}>
+          <section id="contact" className="max-w-7xl mx-auto px-6 py-20">
             <Contact />
-          </motion.section>
+          </section>
         </Suspense>
       </main>
 
       {/* Footer */}
-      <footer className="py-12 border-t text-slate-400 border-slate-800 bg-slate-900/50" role="contentinfo">
-        <div className="container mx-auto px-6">
+      <footer className="border-t border-default-200 bg-default-50 py-12">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* About */}
             <div>
-              <h3 className="font-bold text-2xl mb-3 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Sanjay Cheekati
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                Software Development Engineer | MERN Stack & Machine Learning | Building scalable solutions with clean code | Available January 2026 | Job seeker for SDE roles
+              <h3 className="font-bold text-xl mb-3">Sanjay Cheekati</h3>
+              <p className="text-default-600 text-sm leading-relaxed mb-4">
+                Software Development Engineer | MERN Stack & Machine Learning | Building scalable solutions with clean code | Available January 2026
               </p>
-              <div className="flex items-center gap-2 text-sm text-slate-400">
-                <FiMapPin className="text-cyan-400" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-sm text-default-600">
+                <FiMapPin />
                 <span>Hyderabad, Telangana, India</span>
               </div>
             </div>
 
             {/* Quick Links */}
-            <nav aria-label="Footer navigation">
-              <h3 className="font-bold text-lg mb-4 text-white">Quick Links</h3>
+            <div>
+              <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
               <div className="space-y-2 text-sm">
-                <a href="#profile" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Navigate to About section">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> About Me
-                </a>
-                <a href="#skills" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Navigate to Skills section">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Skills & Technologies
-                </a>
-                <a href="#projects" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View software development projects">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Projects & Portfolio
-                </a>
-                <a href="#achievements" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View achievements and certifications">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Achievements
-                </a>
-                <a href="#journey" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="View education and experience timeline">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Education & Journey
-                </a>
-                <a href="#contact" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition group" aria-label="Contact for job opportunities">
-                  <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span> Contact & Hire
-                </a>
+                {menuItems.map((item) => (
+                  <Link key={item.name} href={item.href} color="foreground" className="block">
+                    {item.name}
+                  </Link>
+                ))}
               </div>
-            </nav>
+            </div>
 
             {/* Social & Contact */}
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">Connect With Me</h3>
+              <h3 className="font-semibold text-lg mb-4">Connect With Me</h3>
               <div className="flex gap-3 mb-4">
-                <motion.a
+                <Link
+                  isExternal
                   href="https://github.com/SanjayCheekati/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="Visit Sanjay Cheekati's GitHub profile"
+                  className="w-10 h-10 flex items-center justify-center border border-default-200 rounded-lg hover:border-primary"
+                  aria-label="GitHub"
                 >
-                  <FiGithub className="text-lg" aria-hidden="true" />
-                </motion.a>
-                <motion.a
+                  <FiGithub className="text-lg" />
+                </Link>
+                <Link
+                  isExternal
                   href="https://www.linkedin.com/in/sanjaycheekati/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="Visit Sanjay Cheekati's LinkedIn profile for job opportunities"
+                  className="w-10 h-10 flex items-center justify-center border border-default-200 rounded-lg hover:border-primary"
+                  aria-label="LinkedIn"
                 >
-                  <FiLinkedin className="text-lg" aria-hidden="true" />
-                </motion.a>
-                <motion.a
+                  <FiLinkedin className="text-lg" />
+                </Link>
+                <Link
                   href="mailto:sanjaycheekati83@gmail.com"
-                  className="w-10 h-10 flex items-center justify-center bg-slate-800/50 hover:bg-slate-700 rounded-lg border border-slate-700/50 hover:border-red-500/50 transition-all duration-300"
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  aria-label="Send email to Sanjay Cheekati"
+                  className="w-10 h-10 flex items-center justify-center border border-default-200 rounded-lg hover:border-primary"
+                  aria-label="Email"
                 >
-                  <FiMail className="text-lg" aria-hidden="true" />
-                </motion.a>
+                  <FiMail className="text-lg" />
+                </Link>
               </div>
-              <a 
+              <Link 
                 href="mailto:sanjaycheekati83@gmail.com"
-                className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition"
-                aria-label="Email sanjaycheekati83@gmail.com"
+                color="foreground"
+                className="flex items-center gap-2 text-sm"
               >
-                <FiMail className="text-cyan-400" aria-hidden="true" />
+                <FiMail />
                 sanjaycheekati83@gmail.com
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Bottom Bar */}
-          <div className="pt-6 border-t border-slate-800">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
+          <div className="pt-6 border-t border-default-200">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-default-600">
               <p>© {new Date().getFullYear()} Cheekati Sanjay Goud. All rights reserved.</p>
-              <p className="flex items-center gap-2">
-                Built with <span className="text-red-500" role="img" aria-label="heart">❤️</span> patience <span className="text-yellow-400" role="img" aria-label="laughing">😂</span> using React, Node.js & Tailwind CSS
-              </p>
+              <p>Built with React & NextUI</p>
             </div>
           </div>
         </div>
       </footer>
       <Analytics />
     </div>
-    </Suspense>
   )
 }

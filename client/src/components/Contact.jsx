@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { Card, CardBody, Input, Textarea, Button, Link } from '@nextui-org/react'
 import axios from 'axios'
 import { FiMail, FiUser, FiMessageSquare, FiGithub, FiLinkedin, FiSend, FiPhone } from 'react-icons/fi'
 
@@ -40,15 +40,13 @@ export default function Contact() {
     
     setStatus('sending')
     try {
-      // Vercel serverless function endpoint
-      const response = await axios.post('/api/contact', form)
+      await axios.post('/api/contact', form)
       setStatus('sent')
       setForm({ name: '', email: '', message: '' })
       setErrors({})
       setTimeout(() => setStatus(null), 5000)
     } catch (err) {
       console.error('Contact form error:', err)
-      console.error('Error response:', err.response?.data)
       const errorMsg = err.response?.data?.error || 'Unknown error occurred'
       alert(`ERROR: ${errorMsg}\n\nCheck browser console for details`)
       setStatus('error')
@@ -57,231 +55,137 @@ export default function Contact() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <motion.h2
-        id="contact-heading"
-        className="text-3xl md:text-4xl font-bold mb-4 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        Let's Connect
-      </motion.h2>
+    <div className="max-w-6xl mx-auto">
+      <h2 className="text-4xl font-bold mb-4 text-center">Let's Connect</h2>
       
-      <motion.p
-        className="text-slate-300 text-center mb-12 text-base md:text-lg max-w-2xl mx-auto"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        Open to full-time SDE roles and internship opportunities starting January 2026. Let's discuss how I can contribute to your team with my skills in full-stack development and machine learning.
-      </motion.p>
+      <p className="text-default-600 text-center mb-12 text-lg max-w-2xl mx-auto">
+        Open to full-time SDE roles and internship opportunities starting January 2026. Let's discuss how I can contribute to your team.
+      </p>
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
+        <div className="space-y-4">
           <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
           
-          {/* Contact Cards */}
-          <motion.a
-            href="mailto:sanjaycheekati83@gmail.com"
-            className="flex items-center gap-4 bg-slate-800 p-4 rounded-xl hover:bg-slate-750 transition group"
-            whileHover={{ x: 5 }}
-            aria-label="Send email to sanjaycheekati83@gmail.com"
-          >
-            <div className="p-3 bg-primary/20 rounded-lg group-hover:bg-primary group-hover:text-black transition">
-              <FiMail className="text-xl" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-400">Email Me</p>
-              <p className="font-medium">sanjaycheekati83@gmail.com</p>
-            </div>
-          </motion.a>
+          <Card isPressable as={Link} href="mailto:sanjaycheekati83@gmail.com" className="hover:scale-105 transition-transform">
+            <CardBody className="flex-row items-center gap-4">
+              <div className="p-3 bg-primary-50 rounded-lg">
+                <FiMail className="text-xl text-primary" />
+              </div>
+              <div>
+                <p className="text-sm text-default-500">Email Me</p>
+                <p className="font-medium">sanjaycheekati83@gmail.com</p>
+              </div>
+            </CardBody>
+          </Card>
 
-          <motion.a
-            href="https://www.linkedin.com/in/sanjaycheekati/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4 bg-slate-800 p-4 rounded-xl hover:bg-slate-750 transition group"
-            whileHover={{ x: 5 }}
-            aria-label="Connect with Sanjay Cheekati on LinkedIn for job opportunities"
-          >
-            <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500 group-hover:text-white transition">
-              <FiLinkedin className="text-xl" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-400">Connect on LinkedIn</p>
-              <p className="font-medium">linkedin.com/in/sanjaycheekati</p>
-            </div>
-          </motion.a>
+          <Card isPressable as={Link} isExternal href="https://www.linkedin.com/in/sanjaycheekati/" className="hover:scale-105 transition-transform">
+            <CardBody className="flex-row items-center gap-4">
+              <div className="p-3 bg-primary-50 rounded-lg">
+                <FiLinkedin className="text-xl text-primary" />
+              </div>
+              <div>
+                <p className="text-sm text-default-500">Connect on LinkedIn</p>
+                <p className="font-medium">linkedin.com/in/sanjaycheekati</p>
+              </div>
+            </CardBody>
+          </Card>
 
-          <motion.a
-            href="https://github.com/SanjayCheekati/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4 bg-slate-800 p-4 rounded-xl hover:bg-slate-750 transition group"
-            whileHover={{ x: 5 }}
-            aria-label="View Sanjay Cheekati's GitHub profile and software projects"
-          >
-            <div className="p-3 bg-slate-700 rounded-lg group-hover:bg-slate-600 transition">
-              <FiGithub className="text-xl" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-400">View GitHub</p>
-              <p className="font-medium">github.com/SanjayCheekati</p>
-            </div>
-          </motion.a>
+          <Card isPressable as={Link} isExternal href="https://github.com/SanjayCheekati/" className="hover:scale-105 transition-transform">
+            <CardBody className="flex-row items-center gap-4">
+              <div className="p-3 bg-default-100 rounded-lg">
+                <FiGithub className="text-xl" />
+              </div>
+              <div>
+                <p className="text-sm text-default-500">View GitHub</p>
+                <p className="font-medium">github.com/SanjayCheekati</p>
+              </div>
+            </CardBody>
+          </Card>
 
-          <motion.a
-            href="tel:+919440543283"
-            className="flex items-center gap-4 bg-slate-800 p-4 rounded-xl hover:bg-slate-750 transition group"
-            whileHover={{ x: 5 }}
-            aria-label="Call Sanjay Cheekati at +91 9440543283"
-          >
-            <div className="p-3 bg-green-500/20 rounded-lg group-hover:bg-green-500 group-hover:text-white transition">
-              <FiPhone className="text-xl" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-400">Call Me</p>
-              <p className="font-medium">+91 9440543283</p>
-            </div>
-          </motion.a>
-        </motion.div>
+          <Card isPressable as={Link} href="tel:+919440543283" className="hover:scale-105 transition-transform">
+            <CardBody className="flex-row items-center gap-4">
+              <div className="p-3 bg-success-50 rounded-lg">
+                <FiPhone className="text-xl text-success" />
+              </div>
+              <div>
+                <p className="text-sm text-default-500">Call Me</p>
+                <p className="font-medium">+91 9440543283</p>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
 
         {/* Contact Form */}
-        <motion.div
-          className="bg-slate-800 p-6 md:p-8 rounded-2xl shadow-xl"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-          
-          <form onSubmit={handleSubmit} className="space-y-5" aria-label="Contact form">
-            <div className="relative">
-              <label htmlFor="contact-name" className="sr-only">Your Name</label>
-              <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" aria-hidden="true" />
-              <input
-                id="contact-name"
+        <Card>
+          <CardBody className="p-6 md:p-8">
+            <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <Input
+                label="Your Name"
+                placeholder="Enter your name"
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
-                placeholder="Your name *"
-                className={`w-full pl-11 pr-4 py-3 md:py-4 rounded-lg bg-slate-900 border ${
-                  errors.name ? 'border-red-500' : 'border-slate-700'
-                } focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-base relative z-0`}
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? 'name-error' : undefined}
-                aria-required="true"
+                isInvalid={!!errors.name}
+                errorMessage={errors.name}
+                startContent={<FiUser className="text-default-400" />}
+                isRequired
               />
-              {errors.name && (
-                <p id="name-error" className="text-red-400 text-sm mt-1" role="alert">{errors.name}</p>
-              )}
-            </div>
 
-            <div className="relative">
-              <label htmlFor="contact-email" className="sr-only">Email Address</label>
-              <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10" aria-hidden="true" />
-              <input
-                id="contact-email"
+              <Input
                 type="email"
+                label="Email Address"
+                placeholder="Enter your email"
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
-                placeholder="Email address *"
-                className={`w-full pl-11 pr-4 py-3 md:py-4 rounded-lg bg-slate-900 border ${
-                  errors.email ? 'border-red-500' : 'border-slate-700'
-                } focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-base relative z-0`}
-                aria-invalid={!!errors.email}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-                aria-required="true"
+                isInvalid={!!errors.email}
+                errorMessage={errors.email}
+                startContent={<FiMail className="text-default-400" />}
+                isRequired
               />
-              {errors.email && (
-                <p id="email-error" className="text-red-400 text-sm mt-1" role="alert">{errors.email}</p>
-              )}
-            </div>
 
-            <div className="relative">
-              <label htmlFor="contact-message" className="sr-only">Your Message</label>
-              <FiMessageSquare className="absolute left-4 top-4 text-slate-400 pointer-events-none z-10" aria-hidden="true" />
-              <textarea
-                id="contact-message"
+              <Textarea
+                label="Your Message"
+                placeholder="Enter your message"
                 value={form.message}
                 onChange={e => setForm({ ...form, message: e.target.value })}
-                placeholder="Your message *"
-                rows="4"
-                className={`w-full pl-11 pr-4 py-3 md:py-4 rounded-lg bg-slate-900 border ${
-                  errors.message ? 'border-red-500' : 'border-slate-700'
-                } focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none text-base relative z-0`}
-                aria-invalid={!!errors.message}
-                aria-describedby={errors.message ? 'message-error' : undefined}
-                aria-required="true"
+                isInvalid={!!errors.message}
+                errorMessage={errors.message}
+                minRows={4}
+                startContent={<FiMessageSquare className="text-default-400 mt-3" />}
+                isRequired
               />
-              {errors.message && (
-                <p id="message-error" className="text-red-400 text-sm mt-1" role="alert">{errors.message}</p>
-              )}
-            </div>
 
-            <motion.button
-              type="submit"
-              disabled={status === 'sending'}
-              className={`w-full py-3 md:py-4 rounded-lg font-semibold shadow-lg flex items-center justify-center gap-2 transition-all ${
-                status === 'sending'
-                  ? 'bg-gradient-to-r from-slate-700 to-slate-600 text-slate-400 opacity-50 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-primary to-cyan-400 text-black hover:scale-105 hover:shadow-2xl'
-              }`}
-              whileHover={status !== 'sending' ? { scale: 1.05 } : {}}
-              whileTap={status !== 'sending' ? { scale: 0.95 } : {}}
-              aria-label={status === 'sending' ? 'Sending message' : 'Send message'}
-            >
-              {status === 'sending' ? (
-                <>
-                  <motion.div
-                    className="w-5 h-5 border-2 border-black border-t-transparent rounded-full"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    aria-hidden="true"
-                  />
-                  <span>Sending...</span>
-                </>
-              ) : (
-                <>
-                  <FiSend aria-hidden="true" /> <span>Send Message</span>
-                </>
-              )}
-            </motion.button>
-
-            {/* Status Messages */}
-            {status === 'sent' && (
-              <motion.div
-                className="bg-green-500/20 border border-green-500 rounded-lg p-4 text-center"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                role="status"
-                aria-live="polite"
+              <Button
+                type="submit"
+                color="primary"
+                size="lg"
+                className="w-full"
+                isLoading={status === 'sending'}
+                startContent={status !== 'sending' && <FiSend />}
               >
-                <p className="text-green-400 font-medium">✓ Message sent successfully! I'll get back to you soon.</p>
-              </motion.div>
-            )}
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
+              </Button>
 
-            {status === 'error' && (
-              <motion.div
-                className="bg-red-500/20 border border-red-500 rounded-lg p-4 text-center"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                role="alert"
-                aria-live="assertive"
-              >
-                <p className="text-red-400 font-medium">✗ Failed to send message. Please try again or email directly.</p>
-              </motion.div>
-            )}
-          </form>
-        </motion.div>
+              {status === 'sent' && (
+                <Card className="bg-success-50 border-success">
+                  <CardBody>
+                    <p className="text-success text-center font-medium">✓ Message sent successfully! I'll get back to you soon.</p>
+                  </CardBody>
+                </Card>
+              )}
+
+              {status === 'error' && (
+                <Card className="bg-danger-50 border-danger">
+                  <CardBody>
+                    <p className="text-danger text-center font-medium">✗ Failed to send message. Please try again or email directly.</p>
+                  </CardBody>
+                </Card>
+              )}
+            </form>
+          </CardBody>
+        </Card>
       </div>
     </div>
   )
