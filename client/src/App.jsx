@@ -14,21 +14,21 @@ const Timeline = lazy(() => import('./components/Timeline'))
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(true)
-
-  useEffect(() => {
-    // Initialize theme from localStorage or default to dark
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = savedTheme ? savedTheme === 'dark' : true
-    
-    setIsDark(prefersDark)
-    
-    if (prefersDark) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+  // Initialize dark mode immediately to prevent flicker
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme')
+      const prefersDark = savedTheme ? savedTheme === 'dark' : true
+      // Set the class immediately during initialization
+      if (prefersDark) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+      return prefersDark
     }
-  }, [])
+    return true
+  })
 
   const toggleTheme = () => {
     const newTheme = !isDark

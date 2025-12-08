@@ -4,7 +4,7 @@ import { FiDownload, FiLinkedin, FiGithub } from 'react-icons/fi'
 
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] flex items-center bg-gradient-to-b from-default-50 to-white">
+    <section className="min-h-[90vh] flex items-center bg-gradient-to-b from-default-50 to-background">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
