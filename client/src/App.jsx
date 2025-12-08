@@ -162,7 +162,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-default-200 bg-default-50 py-12">
+      <footer className="border-t border-default-200 py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* About */}
