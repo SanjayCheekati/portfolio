@@ -14,8 +14,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'animation': ['framer-motion', 'gsap'],
-          'three': ['three', '@react-three/fiber', '@react-three/drei']
+          'nextui': ['@nextui-org/react']
         }
       }
     },
