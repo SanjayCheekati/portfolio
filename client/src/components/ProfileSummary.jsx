@@ -36,10 +36,16 @@ export default function ProfileSummary() {
                 {/* Introduction */}
                 <div className="text-default-700 text-sm mb-4 leading-relaxed space-y-2">
                   <p>
-                    <span className="font-semibold">Hey! I'm Sanjay,</span> currently pursuing B.Tech in Computer Science at MGIT.
+                    <span className="font-semibold">Hey! I'm Sanjay,</span> currently pursuing B.Tech in Computer Science at MGIT. Previously studied Diploma at TRR Polytechnic.
                   </p>
                   <p>
-                    Passionate about full-stack development and machine learning. Open to internships and job opportunities starting January 2026.
+                    I'm passionate about full-stack development and machine learning, and I love vibe coding! 💻
+                  </p>
+                  <p>
+                    I want to apply my knowledge in real-world applications. As an enthusiastic learner, I'm open to internships and job opportunities.
+                  </p>
+                  <p>
+                    Love participating in hackathons and tech events! 🚀
                   </p>
                 </div>
 

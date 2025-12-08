@@ -10,12 +10,12 @@ const achievements = [
   },
   {
     title: 'Hackathon Winner',
-    desc: 'Won in hackathon competition',
+    desc: 'Won Consolidation Prize in HACKSAVY(MGIT) - National Level Hackathon 2025',
     icon: <FiAward />
   },
   {
     title: 'Tech Events',
-    desc: 'Actively participating in tech events and hackathons',
+    desc: 'Actively participating in tech events, workshops and hackathons',
     icon: <FiAward />
   },
   {
@@ -27,14 +27,14 @@ const achievements = [
 
 const certifications = [
   {
-    title: 'Python Essentials',
-    organization: 'Cisco Networking Academy',
-    date: '2024',
+    title: 'AI/ML Level 5 Certification',
+    organization: 'National Skill Development Corporation (NSDC) - Skill India',
+    date: '2025',
     credentialUrl: '#'
   },
   {
-    title: 'AI/ML Level 5 Certification',
-    organization: 'NSDC',
+    title: 'Python Essentials',
+    organization: 'Cisco Networking Academy',
     date: '2024',
     credentialUrl: '#'
   },
@@ -47,19 +47,19 @@ const certifications = [
   {
     title: 'SQL',
     organization: 'Dev Gym',
-    date: '2023',
+    date: '2024',
     credentialUrl: '#'
   },
   {
     title: 'Introduction to Data Science',
     organization: 'Cisco Networking Academy',
-    date: '2023',
+    date: '2024',
     credentialUrl: '#'
   },
   {
     title: 'Salesforce Developer Virtual Internship',
     organization: 'Salesforce',
-    date: '2023',
+    date: '2024',
     credentialUrl: '#'
   }
 ]

@@ -32,7 +32,7 @@ const timeline = [
   {
     year: '2020-2023',
     title: 'Diploma in Computer Science and Engineering',
-    institution: 'TRR Polytechnic, Hyderabad',
+    institution: 'T.R.R College of Technology, Hyderabad',
     desc: 'Completed Diploma with strong foundation in programming and software development',
     highlights: [
       'CGPA: 9.04',

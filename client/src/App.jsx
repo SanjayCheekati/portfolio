@@ -14,28 +14,33 @@ const Timeline = lazy(() => import('./components/Timeline'))
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(() => {
-    // Check if user has a saved preference, otherwise default to dark
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme')
-      return saved ? saved === 'dark' : true
-    }
-    return true
-  })
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
-    // Apply theme on mount and when it changes
-    if (isDark) {
+    // Initialize theme from localStorage or default to dark
+    const savedTheme = localStorage.getItem('theme')
+    const prefersDark = savedTheme ? savedTheme === 'dark' : true
+    
+    setIsDark(prefersDark)
+    
+    if (prefersDark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = !isDark
+    setIsDark(newTheme)
+    
+    if (newTheme) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
       localStorage.setItem('theme', 'light')
     }
-  }, [isDark])
-
-  const toggleTheme = () => {
-    setIsDark(!isDark)
   }
 
   const menuItems = [
