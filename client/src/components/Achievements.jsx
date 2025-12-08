@@ -66,7 +66,7 @@ const certifications = [
 
 export default function Achievements() {
   return (
-    <section className="py-16 bg-default-50">
+    <section className="py-16">
       <div className="max-w-6xl mx-auto px-6">
         {/* Achievements Section */}
         <h2 className="text-4xl font-bold mb-12 text-center">Achievements</h2>

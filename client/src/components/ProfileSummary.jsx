@@ -5,7 +5,7 @@ import { SiLeetcode } from 'react-icons/si'
 
 export default function ProfileSummary() {
   return (
-    <section className="py-16 bg-default-50">
+    <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
         <Card>
           <CardBody className="p-8">
