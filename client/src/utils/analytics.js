@@ -9,37 +9,39 @@
  */
 export const initAnalytics = (measurementId) => {
   if (!measurementId) {
-    console.warn('Google Analytics: No measurement ID provided');
+    if (import.meta.env.DEV) {
+      console.warn('Google Analytics: No measurement ID provided');
+    }
     return;
   }
 
   // Prevent double initialization
   if (window.gtag) {
-    console.warn('Google Analytics: Already initialized');
     return;
   }
 
-  // Load GA4 script
+  // Initialize dataLayer and gtag stub BEFORE loading script
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function() {
+    window.dataLayer.push(arguments);
+  };
+
+  // Configure GA4 (queued in dataLayer)
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId, {
+    send_page_view: true,
+    anonymize_ip: true,
+  });
+
+  // Load GA4 script asynchronously
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
   document.head.appendChild(script);
 
-  // Initialize dataLayer
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    window.dataLayer.push(arguments);
+  if (import.meta.env.DEV) {
+    console.log('Google Analytics initialized:', measurementId);
   }
-  window.gtag = gtag;
-
-  // Configure GA4
-  gtag('js', new Date());
-  gtag('config', measurementId, {
-    send_page_view: true,
-    anonymize_ip: true, // Privacy-friendly
-  });
-
-  console.log('Google Analytics initialized:', measurementId);
 };
 
 /**
@@ -49,7 +51,9 @@ export const initAnalytics = (measurementId) => {
  */
 export const trackClick = (label, params = {}) => {
   if (!window.gtag) {
-    console.warn('Google Analytics: gtag not initialized');
+    if (import.meta.env.DEV) {
+      console.warn('Google Analytics: gtag not initialized');
+    }
     return;
   }
 
@@ -58,21 +62,27 @@ export const trackClick = (label, params = {}) => {
     ...params,
   });
 
-  console.log('GA Event: click ->', label, params);
+  if (import.meta.env.DEV) {
+    console.log('GA Event: click ->', label, params);
+  }
 };
 
 /**
  * Track page views (for SPA navigation)
- * @param {string} path - Page path (e.g., "/projects")
- */
-export const trackPageView = (path) => {
-  if (!window.gtag) {
-    console.warn('Google Analytics: gtag not initialized');
+ * @if (import.meta.env.DEV) {
+      console.warn('Google Analytics: gtag not initialized');
+    }
     return;
   }
 
   window.gtag('event', 'page_view', {
     page_path: path,
+    page_title: document.title,
+  });
+
+  if (import.meta.env.DEV) {
+    console.log('GA Event: page_view ->', path);
+  }
     page_title: document.title,
   });
 
@@ -87,7 +97,9 @@ export const trackProjectView = (projectName) => {
   if (!window.gtag) return;
 
   window.gtag('event', 'view_item', {
-    event_category: 'Projects',
+  if (import.meta.env.DEV) {
+    console.log('GA Event: view_item ->', projectName);
+  }
     event_label: projectName,
   });
 
@@ -99,7 +111,9 @@ export const trackProjectView = (projectName) => {
  * @param {string} action - Action type (e.g., "email_click", "form_submit")
  */
 export const trackContact = (action) => {
-  if (!window.gtag) return;
+  if (import.meta.env.DEV) {
+    console.log('GA Event: contact ->', action);
+  }
 
   window.gtag('event', action, {
     event_category: 'Contact',
@@ -114,7 +128,9 @@ export const trackContact = (action) => {
  * @param {string} label - Link label
  */
 export const trackExternalLink = (url, label) => {
-  if (!window.gtag) return;
+  if (import.meta.env.DEV) {
+    console.log('GA Event: external_link ->', label, url);
+  }
 
   window.gtag('event', 'click', {
     event_category: 'External Link',
@@ -132,7 +148,9 @@ export const trackExternalLink = (url, label) => {
 export const trackScrollDepth = (percentage) => {
   if (!window.gtag) return;
 
-  window.gtag('event', 'scroll', {
+  if (import.meta.env.DEV) {
+    console.log('GA Event: scroll ->', `${percentage}%`);
+  }
     event_category: 'Engagement',
     event_label: `${percentage}%`,
     value: percentage,
@@ -144,7 +162,9 @@ export const trackScrollDepth = (percentage) => {
 /**
  * Track resume downloads
  */
-export const trackResumeDownload = () => {
+exif (import.meta.env.DEV) {
+    console.log('GA Event: resume_download');
+  }
   if (!window.gtag) return;
 
   window.gtag('event', 'file_download', {
