@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Chip } from '@nextui-org/react'
 import { FiDownload, FiLinkedin, FiGithub } from 'react-icons/fi'
+import { trackClick, trackResumeDownload } from '../utils/analytics'
 
 export default function Hero() {
   return (
@@ -40,6 +41,10 @@ export default function Hero() {
                 color="primary"
                 size="lg"
                 startContent={<FiDownload />}
+                onClick={() => {
+                  trackResumeDownload();
+                  trackClick('hero_download_resume');
+                }}
               >
                 Download Resume
               </Button>
@@ -52,6 +57,7 @@ export default function Hero() {
                 variant="bordered"
                 size="lg"
                 startContent={<FiLinkedin />}
+                onClick={() => trackClick('hero_linkedin_click')}
               >
                 LinkedIn
               </Button>
@@ -64,6 +70,7 @@ export default function Hero() {
                 variant="bordered"
                 size="lg"
                 startContent={<FiGithub />}
+                onClick={() => trackClick('hero_github_click')}
               >
                 GitHub
               </Button>

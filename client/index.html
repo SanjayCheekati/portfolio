@@ -22,6 +22,13 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="alternate" href="https://sanjaycheekati.dev" hreflang="en" />
     
+    <!-- Preload critical fonts for faster text rendering (font-display: swap) -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2" crossorigin>
+    
+    <!-- Preload hero section image for Largest Contentful Paint (LCP) optimization -->
+    <!-- Update href to your actual hero image path -->
+    <link rel="preload" as="image" href="/og-image.png" fetchpriority="high">
+    
     <!-- Prefetch critical resources -->
     <link rel="prefetch" href="/CHEEKATI_SANJAY_GOUD.pdf" as="document">
     
@@ -43,9 +50,9 @@
     <meta name="theme-color" content="#06b6d4" media="(prefers-color-scheme: light)" />
     
     <!-- Primary Meta Tags - Optimized for CTR -->
-    <title>Sanjay Cheekati | Full Stack Developer (MERN, AI/ML,)</title>
-    <meta name="title" content="Sanjay Cheekati | Full Stack Developer (MERN, AI/ML,)" />
-    <meta name="description" content="Portfolio of Sanjay Cheekati — Full Stack Developer skilled in MERN and AI/ML. Explore latest projects from my portfolio and GitHub, including BERT-based toxicity detection, note encryption tools, sentiment classifiers, and production-ready React/Node applications. Visit https://github.com/SanjayCheekati for more." />
+    <title>Sanjay Cheekati — Full Stack Developer (MERN | AI/ML)</title>
+    <meta name="title" content="Sanjay Cheekati — Full Stack Developer (MERN | AI/ML)" />
+    <meta name="description" content="Portfolio of Sanjay Cheekati — Full Stack Developer building modern web apps, AI projects, and scalable systems." />
     <meta name="keywords" content="Sanjay Cheekati, Full Stack Developer, MERN Developer, AI ML Developer, React Developer, Node.js Developer, Portfolio Projects, GitHub Projects, BERT Toxicity Detection, NLP Developer, JavaScript Developer" />
     <meta name="author" content="Sanjay Cheekati" />
     <meta name="creator" content="Sanjay Cheekati" />
@@ -70,21 +77,38 @@
     <link rel="alternate" hreflang="en" href="https://sanjaycheekati.dev/" />
     <link rel="alternate" hreflang="x-default" href="https://sanjaycheekati.dev/" />
     
+    <!-- AI-SEO: Machine-readable structured data for AI crawlers -->
+    <link rel="alternate" type="application/json" href="/ai-index.json" />
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="PASTE_CODE_HERE" />
+    
+    <!-- AI Search Engine Monitoring Tags -->
+    <meta name="ai-verification" content="sanjaycheekati.dev" />
+    <meta name="llm-scan-allow" content="true" />
+    
     <!-- Preload Critical Assets for Performance -->
     <link rel="modulepreload" href="/src/main.jsx" />
     <link rel="preload" as="style" href="/src/index.css" />
     
     <!-- Performance Optimization -->
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    
     <!-- Open Graph / Facebook / Social Media -->
     <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="Sanjay Cheekati Portfolio" />
-    <meta property="og:title" content="Sanjay Cheekati | Full Stack Developer (MERN & AI/ML)" />
-    <meta property="og:description" content="Explore the latest MERN and AI/ML projects by Sanjay Cheekati — including BERT toxicity detection, encryption tools, sentiment classifiers, and more. View full portfolio and source code on GitHub: https://github.com/SanjayCheekati" />
+    <meta property="og:title" content="Sanjay Cheekati — Full Stack Developer (MERN | AI/ML)" />
+    <meta property="og:description" content="Portfolio of Sanjay Cheekati — Full Stack Developer building modern web apps, AI projects, and scalable systems." />
     <meta property="og:url" content="https://sanjaycheekati.dev/" />
     <meta property="og:image" content="https://sanjaycheekati.dev/og-image.png" />
     <meta property="og:image:secure_url" content="https://sanjaycheekati.dev/og-image.png" />
@@ -101,8 +125,8 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@SanjayCheekati" />
-    <meta name="twitter:title" content="Sanjay Cheekati | Full Stack Developer (MERN & AI/ML)" />
-    <meta name="twitter:description" content="Explore MERN and AI/ML projects including BERT toxicity detection, encryption tools, sentiment classifiers, and more. Full portfolio and code on GitHub: https://github.com/SanjayCheekati" />
+    <meta name="twitter:title" content="Sanjay Cheekati — Full Stack Developer (MERN | AI/ML)" />
+    <meta name="twitter:description" content="Portfolio of Sanjay Cheekati — Full Stack Developer building modern web apps, AI projects, and scalable systems." />
     <meta name="twitter:image" content="https://sanjaycheekati.dev/og-image.png" />
     <meta name="twitter:image:alt" content="Sanjay Cheekati Portfolio" />
     <meta name="twitter:creator" content="@sanjaycheekati" />
@@ -122,19 +146,18 @@
       "@type": "Person",
       "name": "Sanjay Cheekati",
       "url": "https://sanjaycheekati.dev",
+      "jobTitle": "Full Stack Developer",
       "sameAs": [
         "https://github.com/SanjayCheekati",
         "https://www.linkedin.com/in/sanjaycheekati"
       ],
-      "jobTitle": "Full Stack Developer",
-      "description": "Full Stack Developer focused on MERN and AI/ML projects such as BERT-based toxicity detection, encryption tools, and sentiment classifiers.",
-      "knowsAbout": ["MERN", "React", "Node.js", "Express", "MongoDB", "AI", "BERT", "NLP"],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "BTech 4th Year Student"
-      },
-      "seekingRole": "Full Stack Developer (MERN) or AI/ML Developer",
-      "email": "mailto:sanjaycheekati83@gmail.com"
+      "description": "Full Stack Developer specializing in MERN, AI/ML, and modern web applications.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "addressCountry": "India"
+      }
     }
     </script>
     
@@ -324,9 +347,270 @@
       }
     }
     </script>
+    
+    <!-- AI-SEO: AboutPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Sanjay Cheekati - Full Stack Developer",
+      "url": "https://sanjaycheekati.dev",
+      "description": "Professional portfolio and about page for Sanjay Cheekati, Full Stack Developer specializing in MERN stack, AI/ML, and NLP technologies.",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Sanjay Cheekati",
+        "jobTitle": "Full Stack Developer",
+        "description": "Full Stack Developer specializing in MERN stack, AI/ML, and NLP. Experienced in building production-grade applications including BERT-based content moderation systems, genetic algorithm optimization, and real-time web applications.",
+        "knowsAbout": [
+          "MERN Stack",
+          "React",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Natural Language Processing",
+          "BERT",
+          "Python",
+          "JavaScript",
+          "REST API",
+          "Docker",
+          "Genetic Algorithms"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Full Stack Developer",
+          "occupationLocation": {
+            "@type": "City",
+            "name": "Hyderabad"
+          }
+        }
+      }
+    }
+    </script>
+    
+    <!-- AI-SEO: CollectionPage Schema for Projects -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Projects by Sanjay Cheekati",
+      "url": "https://sanjaycheekati.dev/#projects",
+      "description": "Portfolio of projects including BERT-based NLP systems, genetic algorithm optimization, real-time web applications, and MERN stack platforms.",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "PureText - Advanced Text Processing Tool",
+              "url": "https://www.puretext.me",
+              "description": "Modern web application for text manipulation with real-time processing, privacy-focused client-side execution.",
+              "applicationCategory": "WebApplication",
+              "operatingSystem": "Any"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "BERT-based Sensitive Content Moderation",
+              "url": "https://github.com/SanjayCheekati/Sensitive-Content-Moderation-using-BERT",
+              "description": "Enterprise-grade NLP system using BERT transformer for real-time sensitive content detection with 94% accuracy.",
+              "programmingLanguage": "Python",
+              "runtimePlatform": "Docker"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "Multi-Objective Genetic Algorithm for Healthcare",
+              "url": "https://github.com/SanjayCheekati/K-means_NSGA-II_HHC",
+              "description": "Optimization framework implementing K-means clustering with NSGA-II achieving 35% efficiency improvement.",
+              "programmingLanguage": "Python"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Full-Stack Portfolio Platform",
+              "url": "https://sanjaycheekati.dev",
+              "description": "Production-grade MERN stack portfolio with 95+ Lighthouse score, real-time contact system, and SEO optimization.",
+              "applicationCategory": "WebApplication",
+              "operatingSystem": "Any"
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- AI-SEO: Noscript block for AI crawlers and embeddings -->
+    <noscript>
+      <div style="font-family: system-ui, sans-serif; max-width: 1200px; margin: 50px auto; padding: 20px; line-height: 1.6;">
+        <h1>Sanjay Cheekati - Full Stack Developer (MERN | AI/ML)</h1>
+        
+        <section>
+          <h2>About</h2>
+          <p>
+            Sanjay Cheekati is a Full Stack Developer specializing in MERN stack (MongoDB, Express, React, Node.js), 
+            Artificial Intelligence, Machine Learning, and Natural Language Processing technologies. Currently a BTech 
+            4th-year Computer Science student based in Hyderabad, Telangana, India. Available for Full Stack Developer 
+            and AI/ML Developer roles starting January 2026.
+          </p>
+          <p>
+            With expertise spanning modern web development and machine learning, Sanjay has built production-grade 
+            applications that demonstrate both technical depth and practical impact. His work includes BERT-based NLP 
+            systems achieving 94% accuracy, genetic algorithm optimization improving efficiency by 35%, and real-time 
+            web applications serving live users.
+          </p>
+        </section>
+        
+        <section>
+          <h2>Technical Skills</h2>
+          <p>
+            <strong>Frontend:</strong> React, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Framer Motion, Three.js
+          </p>
+          <p>
+            <strong>Backend:</strong> Node.js, Express, Python, Flask, REST API, MongoDB, MySQL
+          </p>
+          <p>
+            <strong>AI/ML:</strong> Machine Learning, Natural Language Processing, BERT, Transformers, TensorFlow, Scikit-learn, NumPy, Pandas, Genetic Algorithms
+          </p>
+          <p>
+            <strong>Tools & DevOps:</strong> Git, GitHub, Docker, Postman, CI/CD, Vercel, Railway
+          </p>
+        </section>
+        
+        <section>
+          <h2>Featured Projects</h2>
+          
+          <article>
+            <h3>PureText - Advanced Text Processing Tool (2025)</h3>
+            <p>
+              Live at: https://www.puretext.me | GitHub: https://github.com/SanjayCheekati/puretext
+            </p>
+            <p>
+              Modern web application for text manipulation with real-time processing. Built with React and modern web 
+              technologies, featuring instant text transformations including case conversion, whitespace handling, 
+              character counting, and text reversal. Implements client-side processing for instant results and privacy, 
+              with keyboard shortcuts, copy-to-clipboard functionality, and responsive design. Perfect for developers, 
+              writers, and content creators needing quick text manipulation without software installation.
+            </p>
+            <p><strong>Technologies:</strong> React, JavaScript, CSS, Web APIs, Local Storage</p>
+            <p><strong>Status:</strong> Live and serving users</p>
+          </article>
+          
+          <article>
+            <h3>BERT-based Sensitive Content Moderation (2025)</h3>
+            <p>
+              GitHub: https://github.com/SanjayCheekati/Sensitive-Content-Moderation-using-BERT
+            </p>
+            <p>
+              Enterprise-grade NLP system using BERT (Bidirectional Encoder Representations from Transformers) for 
+              real-time sensitive content detection. Achieves 94% accuracy on multi-class classification (hate speech, 
+              violence, NSFW, spam). Fine-tuned on 50,000+ labeled examples using transfer learning. Implements real-time 
+              inference with sub-100ms latency, REST API for easy integration, and confidence scoring for ambiguous cases. 
+              Deployed with Flask and containerized with Docker for scalability. Handles multi-language content (English, 
+              Hindi, Spanish) with preprocessing pipeline including tokenization, normalization, and entity masking.
+            </p>
+            <p><strong>Technologies:</strong> Python, BERT, Transformers, NLP, TensorFlow, Flask, Docker, REST API</p>
+            <p><strong>Metrics:</strong> 94% accuracy, Sub-100ms latency, 50K+ training samples, Multi-language support</p>
+            <p><strong>Status:</strong> Completed</p>
+          </article>
+          
+          <article>
+            <h3>Multi-Objective Genetic Algorithm for Healthcare Optimization (2025-2026)</h3>
+            <p>
+              GitHub: https://github.com/SanjayCheekati/K-means_NSGA-II_HHC
+            </p>
+            <p>
+              Production-ready optimization framework implementing K-means clustering integrated with NSGA-II 
+              (Non-dominated Sorting Genetic Algorithm II) for Home Health Care scheduling. Achieves 35% improvement 
+              in route efficiency and 40% reduction in scheduling conflicts. Handles complex constraints including time 
+              windows, caregiver skills, patient preferences, and multi-objective optimization (minimizing cost, travel 
+              time, and maximizing patient satisfaction). Dataset includes 500+ patients and 50+ caregivers across 
+              12-month simulation.
+            </p>
+            <p><strong>Technologies:</strong> Python, Machine Learning, NSGA-II, K-means, Genetic Algorithms, NumPy, Pandas, Scikit-learn</p>
+            <p><strong>Metrics:</strong> 35% efficiency gain, 40% conflict reduction, 500+ patient dataset</p>
+            <p><strong>Status:</strong> Ongoing development</p>
+          </article>
+          
+          <article>
+            <h3>Full-Stack Portfolio Platform (2025)</h3>
+            <p>
+              Live at: https://sanjaycheekati.dev | GitHub: https://github.com/SanjayCheekati/portfolio
+            </p>
+            <p>
+              Production-grade portfolio platform built with React 18, Node.js, Express, and MongoDB. Features include 
+              server-side contact form with email integration, animated UI components using Framer Motion (60 FPS), 
+              Three.js particle effects, dark/light theme with CSS variables, comprehensive SEO optimization, lazy loading 
+              for performance (Lighthouse score 95+), mobile-first responsive design, and WCAG 2.1 AA accessibility 
+              compliance. Backend includes input validation, rate limiting, email service (Nodemailer), MongoDB for 
+              message storage, and RESTful API design. Deployed on Vercel (frontend) and Railway (backend) with CI/CD pipeline.
+            </p>
+            <p><strong>Technologies:</strong> React, Node.js, Express, MongoDB, Tailwind CSS, Framer Motion, Three.js, REST API</p>
+            <p><strong>Metrics:</strong> Lighthouse score 95+, 60 FPS animations, RESTful API, CI/CD deployed</p>
+            <p><strong>Status:</strong> Live and production-ready</p>
+          </article>
+        </section>
+        
+        <section>
+          <h2>Key Achievements</h2>
+          <ul>
+            <li>Built production-ready BERT NLP system with 94% accuracy for content moderation</li>
+            <li>Developed genetic algorithm achieving 35% efficiency improvement in healthcare resource scheduling</li>
+            <li>Created and deployed real-time text processing tool serving active users at puretext.me</li>
+            <li>Designed full-stack MERN portfolio with 95+ Lighthouse score and comprehensive SEO</li>
+            <li>Implemented CI/CD pipelines for automated deployment and testing</li>
+            <li>Built RESTful APIs handling authentication, validation, and rate limiting</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h2>Education</h2>
+          <p>
+            <strong>BTech in Computer Science and Engineering</strong><br>
+            Currently 4th Year Student<br>
+            Focus: Full Stack Development, Machine Learning, Natural Language Processing
+          </p>
+        </section>
+        
+        <section>
+          <h2>Contact Information</h2>
+          <p>
+            <strong>Email:</strong> sanjaycheekati83@gmail.com<br>
+            <strong>Phone:</strong> +91 9440543283<br>
+            <strong>Location:</strong> Hyderabad, Telangana, India<br>
+            <strong>GitHub:</strong> https://github.com/SanjayCheekati<br>
+            <strong>LinkedIn:</strong> https://www.linkedin.com/in/sanjaycheekati<br>
+            <strong>Portfolio:</strong> https://sanjaycheekati.dev<br>
+            <strong>Project:</strong> https://www.puretext.me
+          </p>
+        </section>
+        
+        <section>
+          <h2>Career Objective</h2>
+          <p>
+            Seeking Full Stack Developer, AI/ML Developer, or Software Development Engineer roles. Open to full-time 
+            positions, internships, and contract work. Available for remote work, onsite, or hybrid arrangements. 
+            Open to relocation opportunities. Start date: January 2026.
+          </p>
+        </section>
+      </div>
+    </noscript>
+    
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

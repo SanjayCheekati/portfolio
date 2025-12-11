@@ -1,23 +1,6 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://sanjaycheekati.dev/sitemap.xml
-
-# Directories
-Allow: /assets/
-Allow: /CHEEKATI_SANJAY_GOUD.pdf
-
-# Boost image previews:
-User-agent: Googlebot
-Allow: /
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.webp$
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
 Allow: /
 
 User-agent: DuckDuckBot

@@ -2,6 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react'
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Spinner, Button } from '@nextui-org/react'
 import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiMoon, FiSun } from 'react-icons/fi'
 import { Analytics } from '@vercel/analytics/react'
+import SEO from './components/SEO'
 import Hero from './components/Hero'
 
 // Lazy load sections
@@ -54,6 +55,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Default SEO for Home Page */}
+      <SEO 
+        title="Sanjay Cheekati — Full Stack Developer (MERN | AI/ML)"
+        description="Portfolio of Sanjay Cheekati — Full Stack Developer building modern web apps, AI projects, and scalable systems."
+        canonical="/"
+      />
+      
       {/* Navigation */}
       <Navbar 
         isBordered

@@ -1,10 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardBody, Input, Textarea, Button, Link } from '@nextui-org/react'
+import { Helmet } from 'react-helmet-async'
 import axios from 'axios'
 import { FiMail, FiUser, FiMessageSquare, FiGithub, FiLinkedin, FiSend, FiPhone } from 'react-icons/fi'
 import { SiLeetcode } from 'react-icons/si'
+import { trackClick, trackContact, trackExternalLink } from '../utils/analytics'
 
 export default function Contact() {
+  // Update SEO when Contact section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.title = 'Contact — Hire or Collaborate with Sanjay Cheekati'
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    const section = document.getElementById('contact')
+    if (section) observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
   const [errors, setErrors] = useState({})
@@ -40,23 +60,36 @@ export default function Contact() {
     }
     
     setStatus('sending')
+    trackContact('form_submit_attempt');
+    
     try {
       await axios.post('/api/contact', form)
       setStatus('sent')
       setForm({ name: '', email: '', message: '' })
       setErrors({})
+      trackContact('form_submit_success');
+      trackClick('contact_form_success');
       setTimeout(() => setStatus(null), 5000)
     } catch (err) {
       console.error('Contact form error:', err)
       const errorMsg = err.response?.data?.error || 'Unknown error occurred'
       alert(`ERROR: ${errorMsg}\n\nCheck browser console for details`)
       setStatus('error')
+      trackContact('form_submit_error');
       setTimeout(() => setStatus(null), 5000)
     }
   }
 
   return (
     <div className="max-w-6xl mx-auto">
+      {/* SEO for Contact Section */}
+      <Helmet>
+        <title>Contact — Hire or Collaborate with Sanjay Cheekati</title>
+        <meta name="description" content="Get in touch with Sanjay Cheekati for full-stack development opportunities, collaborations, or freelance projects. Available from January 2026." />
+        <meta property="og:title" content="Contact — Hire or Collaborate with Sanjay Cheekati" />
+        <meta property="og:description" content="Get in touch with Sanjay Cheekati for full-stack development opportunities, collaborations, or freelance projects. Available from January 2026." />
+      </Helmet>
+
       <h2 className="text-4xl font-bold mb-4 text-center text-primary">Let's Connect</h2>
       
       <p className="text-default-600 text-center mb-12 text-lg max-w-2xl mx-auto">
@@ -68,7 +101,16 @@ export default function Contact() {
         <div className="space-y-4">
           <h3 className="text-xl font-semibold mb-4">Quick Contact</h3>
           
-          <Card isPressable as={Link} href="mailto:sanjaycheekati83@gmail.com" className="hover:scale-105 transition-transform">
+          <Card 
+            isPressable 
+            as={Link} 
+            href="mailto:sanjaycheekati83@gmail.com" 
+            className="hover:scale-105 transition-transform"
+            onClick={() => {
+              trackContact('email_click');
+              trackExternalLink('mailto:sanjaycheekati83@gmail.com', 'Email');
+            }}
+          >
             <CardBody className="flex-row items-center gap-4">
               <div className="p-3 bg-primary-50 rounded-lg">
                 <FiMail className="text-xl text-primary" />
@@ -80,7 +122,17 @@ export default function Contact() {
             </CardBody>
           </Card>
 
-          <Card isPressable as={Link} isExternal href="https://www.linkedin.com/in/sanjaycheekati/" className="hover:scale-105 transition-transform">
+          <Card 
+            isPressable 
+            as={Link} 
+            isExternal 
+            href="https://www.linkedin.com/in/sanjaycheekati/" 
+            className="hover:scale-105 transition-transform"
+            onClick={() => {
+              trackClick('contact_linkedin_click');
+              trackExternalLink('https://www.linkedin.com/in/sanjaycheekati/', 'LinkedIn');
+            }}
+          >
             <CardBody className="flex-row items-center gap-4">
               <div className="p-3 bg-primary-50 rounded-lg">
                 <FiLinkedin className="text-xl text-primary" />
@@ -92,7 +144,17 @@ export default function Contact() {
             </CardBody>
           </Card>
 
-          <Card isPressable as={Link} isExternal href="https://github.com/SanjayCheekati/" className="hover:scale-105 transition-transform">
+          <Card 
+            isPressable 
+            as={Link} 
+            isExternal 
+            href="https://github.com/SanjayCheekati/" 
+            className="hover:scale-105 transition-transform"
+            onClick={() => {
+              trackClick('contact_github_click');
+              trackExternalLink('https://github.com/SanjayCheekati/', 'GitHub');
+            }}
+          >
             <CardBody className="flex-row items-center gap-4">
               <div className="p-3 bg-default-100 rounded-lg">
                 <FiGithub className="text-xl" />
@@ -104,7 +166,17 @@ export default function Contact() {
             </CardBody>
           </Card>
 
-          <Card isPressable as={Link} isExternal href="https://leetcode.com/u/sanjaycheekati/" className="hover:scale-105 transition-transform">
+          <Card 
+            isPressable 
+            as={Link} 
+            isExternal 
+            href="https://leetcode.com/u/sanjaycheekati/" 
+            className="hover:scale-105 transition-transform"
+            onClick={() => {
+              trackClick('contact_leetcode_click');
+              trackExternalLink('https://leetcode.com/u/sanjaycheekati/', 'LeetCode');
+            }}
+          >
             <CardBody className="flex-row items-center gap-4">
               <div className="p-3 bg-warning-50 rounded-lg">
                 <SiLeetcode className="text-xl text-warning" />
@@ -116,7 +188,16 @@ export default function Contact() {
             </CardBody>
           </Card>
 
-          <Card isPressable as={Link} href="tel:+919440543283" className="hover:scale-105 transition-transform">
+          <Card 
+            isPressable 
+            as={Link} 
+            href="tel:+919440543283" 
+            className="hover:scale-105 transition-transform"
+            onClick={() => {
+              trackContact('phone_click');
+              trackClick('contact_phone_click');
+            }}
+          >
             <CardBody className="flex-row items-center gap-4">
               <div className="p-3 bg-success-50 rounded-lg">
                 <FiPhone className="text-xl text-success" />

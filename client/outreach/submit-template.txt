@@ -1,0 +1,106 @@
+Subject: [Project Name] — Potential addition to [Target Project/List]
+
+---
+
+Hi [Maintainer Name],
+
+I hope this message finds you well! I'm Sanjay, a full-stack developer specializing in MERN stack and AI/ML applications.
+
+I recently came across [Target Project Name] and was impressed by [specific thing you liked — e.g., "the curated collection of React resources" or "the comprehensive NLP library list"]. It's been incredibly helpful for my own learning and development.
+
+I wanted to reach out because I built [Your Project Name], which I believe could be a valuable addition to [Target Project]. Here's why:
+
+**What it does:**
+[1-2 sentence description of your project's purpose and unique value]
+
+**Why it might fit [Target Project]:**
+- [Specific reason #1 — e.g., "Solves a common problem your community faces"]
+- [Specific reason #2 — e.g., "Demonstrates [specific technique] not covered in existing entries"]
+- [Specific reason #3 — e.g., "Open source with comprehensive documentation"]
+
+**Technical Details:**
+- Tech Stack: [Brief list]
+- Key Features: [2-3 bullet points]
+- Performance: [1 notable metric if applicable]
+
+**Links:**
+- Live Demo: [URL]
+- GitHub Repository: [URL]
+- Case Study: [URL]
+
+I completely understand if it doesn't align with your current curation criteria — no worries at all! If you'd like any changes or additional information, I'm happy to provide whatever would be helpful.
+
+Thank you for maintaining such a valuable resource for the community. Keep up the great work!
+
+Best regards,
+Sanjay Cheekati
+
+---
+
+Portfolio: https://sanjaycheekati.dev
+GitHub: https://github.com/sanjaycheekati
+LinkedIn: https://linkedin.com/in/sanjaycheekati
+
+---
+
+## Alternative: Shorter Version (for less formal communities)
+
+Subject: [Project Name] for [List/Community]
+
+Hey [Name],
+
+Love what you've built with [Target Project]! I created [Your Project Name] — [one sentence description with key benefit].
+
+Thought it might be a good fit because [specific reason related to the target community].
+
+Live demo: [URL]
+GitHub: [URL]
+
+Let me know if you'd like more details or if I should submit a PR. Thanks!
+
+— Sanjay
+https://sanjaycheekati.dev
+
+---
+
+## Notes on Usage:
+
+1. **Personalize every message** — Mention something specific about their project
+2. **Lead with value** — Explain how it benefits *their* community
+3. **Be concise** — Busy maintainers appreciate brevity
+4. **No pressure** — Make it easy to say "no" gracefully
+5. **Follow up respectfully** — Wait 1 week, then send one polite follow-up if no response
+6. **Offer to help** — Suggest submitting a PR instead of asking them to do the work
+
+---
+
+## Don'ts (Avoid These):
+
+❌ "I'd love to be featured on your list"  
+❌ "This would be great exposure for my project"  
+❌ "Please add my project ASAP"  
+❌ Generic copy-pasted messages with no personalization  
+❌ Multiple follow-ups within 3 days  
+
+---
+
+## When to Send:
+
+- After ensuring your project meets their quality standards
+- After reading their contribution guidelines (if available)
+- After checking recent submissions to understand their criteria
+- When you have a live demo and comprehensive README ready
+
+---
+
+## Expected Response Rate:
+
+- **High-quality, active projects**: 40-60% acceptance rate
+- **Average response time**: 3-7 days
+- **No response after 2 weeks**: Consider it declined, move on
+
+---
+
+## Ethics Reminder:
+
+Only reach out to projects where your submission genuinely adds value. Don't spam maintainers with irrelevant projects just to get backlinks. Quality over quantity always wins.

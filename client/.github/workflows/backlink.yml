@@ -1,0 +1,270 @@
+name: Backlink Injection Automation
+
+# This workflow creates PRs to add portfolio backlinks to README files in target repositories
+# Security: Only runs on manual trigger with explicit confirmation
+# Never pushes directly to main — always creates PRs for maintainer review
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run mode (no actual changes)'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      repos_to_update:
+        description: 'Specific repos to update (comma-separated, leave empty for all)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  backlink-injection:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout portfolio repo
+        uses: actions/checkout@v4
+        with:
+          path: portfolio
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          cd portfolio/client
+          npm ci
+      
+      - name: Load repo configuration
+        id: load_config
+        run: |
+          CONFIG_FILE="portfolio/client/outreach/repos-to-update.json"
+          if [ ! -f "$CONFIG_FILE" ]; then
+            echo "❌ Configuration file not found: $CONFIG_FILE"
+            exit 1
+          fi
+          echo "✅ Configuration loaded successfully"
+      
+      - name: Validate GitHub token
+        if: github.event.inputs.dry_run == 'false'
+        run: |
+          if [ -z "${{ secrets.BACKLINK_PAT }}" ]; then
+            echo "❌ BACKLINK_PAT secret not configured"
+            echo "⚠️  Running in dry-run mode instead"
+            echo "dry_run_override=true" >> $GITHUB_ENV
+          else
+            echo "✅ GitHub PAT configured"
+            echo "dry_run_override=false" >> $GITHUB_ENV
+          fi
+      
+      - name: Run backlink injection script
+        run: |
+          cd portfolio/client
+          
+          # Determine dry-run mode
+          DRY_RUN_FLAG=""
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ] || [ "${{ env.dry_run_override }}" == "true" ]; then
+            DRY_RUN_FLAG="--dry-run"
+            echo "🔍 Running in DRY RUN mode"
+          else
+            echo "🚀 Running in LIVE mode"
+          fi
+          
+          # Run the script
+          node scripts/add-backlinks-to-readmes.js $DRY_RUN_FLAG
+      
+      - name: Create Pull Requests (if not dry-run)
+        if: github.event.inputs.dry_run == 'false' && env.dry_run_override != 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BACKLINK_PAT }}
+        run: |
+          # Read repos config
+          CONFIG_FILE="portfolio/client/outreach/repos-to-update.json"
+          REPOS=$(jq -r '.repos[] | @json' "$CONFIG_FILE")
+          
+          for repo_json in $REPOS; do
+            REPO_NAME=$(echo "$repo_json" | jq -r '.name')
+            REPO_PATH=$(echo "$repo_json" | jq -r '.path')
+            REPO_DESC=$(echo "$repo_json" | jq -r '.description')
+            REPO_TOPICS=$(echo "$repo_json" | jq -r '.topics | join(", ")')
+            
+            echo "📝 Processing: $REPO_NAME"
+            
+            # Check if repo was updated (backlink added)
+            UPDATED=$(grep -l "sanjaycheekati.dev" "${REPO_PATH}/README.md" || echo "")
+            
+            if [ -z "$UPDATED" ]; then
+              echo "⏭️  Skipping $REPO_NAME (no changes)"
+              continue
+            fi
+            
+            # Get GitHub org and repo name
+            GITHUB_REPO="${{ github.repository_owner }}/${REPO_NAME}"
+            BRANCH_NAME="backlink-automation-$(date +%Y%m%d)"
+            
+            echo "Creating PR for $GITHUB_REPO..."
+            
+            # Clone target repo
+            git clone "https://${{ secrets.BACKLINK_PAT }}@github.com/${GITHUB_REPO}.git" "/tmp/${REPO_NAME}"
+            cd "/tmp/${REPO_NAME}"
+            
+            # Create new branch
+            git checkout -b "$BRANCH_NAME"
+            
+            # Copy updated README
+            cp "${REPO_PATH}/README.md" README.md
+            
+            # Commit changes
+            git config user.name "Backlink Bot"
+            git config user.email "bot@sanjaycheekati.dev"
+            git add README.md
+            git commit -m "docs: Add portfolio case study backlink to README
+            
+            Added a backlink section linking to the full project case study on sanjaycheekati.dev.
+            
+            This provides visitors with:
+            - Detailed technical analysis
+            - Performance metrics and benchmarks
+            - Development process insights
+            - Live demo access
+            
+            No functionality changes — documentation only."
+            
+            # Push branch
+            git push origin "$BRANCH_NAME"
+            
+            # Create PR using GitHub CLI
+            gh pr create \
+              --repo "$GITHUB_REPO" \
+              --title "docs: Add portfolio case study backlink" \
+              --body "## 📋 Summary
+
+            This PR adds a backlink section to the README that links to the full project case study on [sanjaycheekati.dev](https://sanjaycheekati.dev/#projects).
+
+            ## 🎯 Purpose
+
+            Provides visitors with additional context:
+            - Technical architecture deep-dive
+            - Performance metrics and achievements
+            - Development challenges and solutions
+            - Live demo access
+
+            ## ✅ Changes
+
+            - Added \"Full Case Study\" section with portfolio link
+            - No code or functionality changes
+            - Documentation enhancement only
+
+            ## 🔍 Review Notes
+
+            Feel free to:
+            - Modify the placement or wording
+            - Request changes to match your style guide
+            - Close if you prefer not to include external links
+
+            This is an automated PR but reviewed by a human maintainer before submission.
+
+            ---
+
+            **Project**: $REPO_DESC  
+            **Topics**: $REPO_TOPICS" \
+              --head "$BRANCH_NAME" \
+              --base "main"
+            
+            echo "✅ PR created for $REPO_NAME"
+          done
+      
+      - name: Update repository topics (if not dry-run)
+        if: github.event.inputs.dry_run == 'false' && env.dry_run_override != 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BACKLINK_PAT }}
+        run: |
+          CONFIG_FILE="portfolio/client/outreach/repos-to-update.json"
+          REPOS=$(jq -r '.repos[] | @json' "$CONFIG_FILE")
+          
+          for repo_json in $REPOS; do
+            REPO_NAME=$(echo "$repo_json" | jq -r '.name')
+            REPO_TOPICS=$(echo "$repo_json" | jq -r '.topics | @json')
+            
+            GITHUB_REPO="${{ github.repository_owner }}/${REPO_NAME}"
+            
+            echo "🏷️  Updating topics for $GITHUB_REPO..."
+            
+            # Update topics using GitHub API
+            curl -X PUT \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Authorization: Bearer ${{ secrets.BACKLINK_PAT }}" \
+              "https://api.github.com/repos/${GITHUB_REPO}/topics" \
+              -d "{\"names\": $REPO_TOPICS}"
+            
+            echo "✅ Topics updated for $REPO_NAME"
+          done
+      
+      - name: Generate summary report
+        if: always()
+        run: |
+          echo "## 📊 Backlink Injection Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Mode**: ${{ github.event.inputs.dry_run == 'true' && 'Dry Run' || 'Live' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+            echo "ℹ️ This was a dry run. No actual changes were made." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "To apply changes for real:" >> $GITHUB_STEP_SUMMARY
+            echo "1. Go to Actions → Backlink Injection Automation" >> $GITHUB_STEP_SUMMARY
+            echo "2. Click 'Run workflow'" >> $GITHUB_STEP_SUMMARY
+            echo "3. Set 'Dry run mode' to **false**" >> $GITHUB_STEP_SUMMARY
+            echo "4. Confirm execution" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ Pull requests created successfully." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Next Steps**:" >> $GITHUB_STEP_SUMMARY
+            echo "1. Review PRs in target repositories" >> $GITHUB_STEP_SUMMARY
+            echo "2. Make any necessary adjustments" >> $GITHUB_STEP_SUMMARY
+            echo "3. Merge when ready" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "📋 See full logs above for details on each repository." >> $GITHUB_STEP_SUMMARY
+
+# Safety Notes:
+# 
+# 1. GITHUB_TOKEN vs BACKLINK_PAT:
+#    - GITHUB_TOKEN: Default token, limited to current repo only
+#    - BACKLINK_PAT: Personal Access Token with repo scope for cross-repo access
+#    - Required permissions: repo (full control of private/public repositories)
+# 
+# 2. Security Best Practices:
+#    - Never commits directly to main branches
+#    - Always creates PRs for maintainer review
+#    - Dry-run mode enabled by default
+#    - Manual trigger only (no automatic runs)
+# 
+# 3. Setup Instructions:
+#    - Go to GitHub → Settings → Secrets and variables → Actions
+#    - Click "New repository secret"
+#    - Name: BACKLINK_PAT
+#    - Value: Your Personal Access Token (generate at github.com/settings/tokens)
+#    - Required scopes: repo, workflow
+# 
+# 4. Tradeoffs:
+#    - GITHUB_TOKEN: No setup, but limited to current repo
+#    - PAT: Full access, but requires manual token creation and rotation
+#    - Recommendation: Use PAT for cross-repo automation
+# 
+# 5. Token Security:
+#    - Never hardcode tokens in workflow files
+#    - Use GitHub Secrets for secure storage
+#    - Rotate tokens every 90 days
+#    - Use fine-grained tokens when possible (beta feature)

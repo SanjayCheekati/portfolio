@@ -1,0 +1,179 @@
+{
+  "name": "Sanjay Cheekati",
+  "role": "Full Stack Developer",
+  "title": "Full Stack Developer specializing in MERN, AI/ML, and modern web applications",
+  "location": {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "country": "India"
+  },
+  "availability": "Available from January 2026",
+  "skills": [
+    "MERN Stack",
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "AI/ML",
+    "NLP",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "BERT",
+    "Transformers",
+    "TensorFlow",
+    "REST API",
+    "Docker",
+    "Git",
+    "Tailwind CSS",
+    "NumPy",
+    "Pandas",
+    "Scikit-learn",
+    "Genetic Algorithms",
+    "Flask",
+    "MySQL",
+    "Postman",
+    "CI/CD"
+  ],
+  "expertise": [
+    "Full Stack Web Development",
+    "Machine Learning Model Development",
+    "Natural Language Processing",
+    "API Design and Development",
+    "Database Design and Optimization",
+    "Content Moderation Systems",
+    "Optimization Algorithms",
+    "Real-time Web Applications",
+    "Responsive UI/UX Design",
+    "Performance Optimization"
+  ],
+  "projects": [
+    {
+      "name": "PureText - Advanced Text Processing Tool",
+      "url": "https://www.puretext.me",
+      "github": "https://github.com/SanjayCheekati/puretext",
+      "description": "Modern web application for text manipulation with real-time processing, multiple transformation options, and clean UI. Feature-rich text processing tool built with React and modern web technologies.",
+      "technologies": ["React", "JavaScript", "CSS", "Web APIs", "Local Storage"],
+      "status": "Live",
+      "year": "2025",
+      "highlights": [
+        "Real-time text processing",
+        "Client-side execution for privacy",
+        "Keyboard shortcuts support",
+        "Copy-to-clipboard functionality"
+      ]
+    },
+    {
+      "name": "Multi-Objective Genetic Algorithm for Healthcare",
+      "url": "https://sanjaycheekati.dev/#projects",
+      "github": "https://github.com/SanjayCheekati/K-means_NSGA-II_HHC",
+      "description": "Production-ready optimization framework implementing K-means clustering integrated with NSGA-II for Home Health Care scheduling. Achieves 35% improvement in route efficiency and 40% reduction in scheduling conflicts.",
+      "technologies": ["Python", "Machine Learning", "NSGA-II", "K-means", "Genetic Algorithms", "NumPy", "Pandas"],
+      "status": "Ongoing",
+      "year": "2025-2026",
+      "highlights": [
+        "35% efficiency gain in routing",
+        "40% reduction in scheduling conflicts",
+        "500+ patient dataset",
+        "Multi-objective optimization"
+      ]
+    },
+    {
+      "name": "BERT-based Sensitive Content Moderation",
+      "url": "https://sanjaycheekati.dev/#projects",
+      "github": "https://github.com/SanjayCheekati/Sensitive-Content-Moderation-using-BERT",
+      "description": "Enterprise-grade NLP system using BERT transformer for real-time sensitive content detection with 94% accuracy. Deep learning content moderation API achieving 94% accuracy on multi-class classification.",
+      "technologies": ["Python", "BERT", "Transformers", "NLP", "TensorFlow", "Flask", "Docker", "REST API"],
+      "status": "Completed",
+      "year": "2025",
+      "highlights": [
+        "94% accuracy on content classification",
+        "Sub-100ms latency",
+        "50K+ training samples",
+        "Multi-language support (English, Hindi, Spanish)"
+      ]
+    },
+    {
+      "name": "Full-Stack Portfolio Platform",
+      "url": "https://sanjaycheekati.dev",
+      "github": "https://github.com/SanjayCheekati/portfolio",
+      "description": "Production-grade portfolio platform built with React 18, Node.js, Express, and MongoDB. Features server-side contact form with email integration, animated UI components, and SEO optimization.",
+      "technologies": ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Framer Motion", "Three.js", "REST API"],
+      "status": "Live",
+      "year": "2025",
+      "highlights": [
+        "Lighthouse score 95+",
+        "60 FPS animations",
+        "RESTful API backend",
+        "CI/CD deployment pipeline"
+      ]
+    }
+  ],
+  "achievements": [
+    "Built production-ready BERT NLP system with 94% accuracy",
+    "Developed genetic algorithm achieving 35% efficiency improvement in healthcare scheduling",
+    "Created real-time text processing tool serving users at puretext.me",
+    "Designed and deployed full-stack portfolio with 95+ Lighthouse score"
+  ],
+  "education": {
+    "degree": "BTech",
+    "field": "Computer Science and Engineering",
+    "year": "4th Year Student",
+    "status": "Currently pursuing"
+  },
+  "contact": {
+    "email": "sanjaycheekati83@gmail.com",
+    "phone": "+919440543283",
+    "website": "https://sanjaycheekati.dev",
+    "github": "https://github.com/SanjayCheekati",
+    "linkedin": "https://www.linkedin.com/in/sanjaycheekati"
+  },
+  "social": {
+    "github": "https://github.com/SanjayCheekati",
+    "linkedin": "https://www.linkedin.com/in/sanjaycheekati",
+    "portfolio": "https://sanjaycheekati.dev",
+    "puretext": "https://www.puretext.me"
+  },
+  "seeking": [
+    "Full Stack Developer roles",
+    "AI/ML Developer positions",
+    "Software Development Engineer opportunities",
+    "Full-time positions",
+    "Internships",
+    "Contract work"
+  ],
+  "workPreferences": {
+    "remoteWork": true,
+    "onsite": true,
+    "hybrid": true,
+    "relocation": "Open to relocation",
+    "startDate": "January 2026"
+  },
+  "summary": "Sanjay Cheekati is a Full Stack Developer specializing in MERN stack, AI/ML, and NLP technologies. With expertise in building production-grade applications including a BERT-based content moderation system (94% accuracy), genetic algorithm optimization for healthcare (35% efficiency gain), and real-time web applications, Sanjay combines strong software engineering skills with machine learning capabilities. Currently a BTech 4th-year student, actively seeking Full Stack Developer or AI/ML Developer roles starting January 2026.",
+  "keywords": [
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "AI ML Developer",
+    "NLP Engineer",
+    "React Developer",
+    "Node.js Developer",
+    "Python Developer",
+    "Machine Learning Engineer",
+    "Software Development Engineer",
+    "Backend Developer",
+    "Frontend Developer",
+    "Web Developer",
+    "JavaScript Developer",
+    "BERT",
+    "Transformers",
+    "Deep Learning",
+    "REST API Developer",
+    "Database Engineer",
+    "DevOps",
+    "Docker",
+    "CI/CD",
+    "Portfolio",
+    "Hyderabad Developer",
+    "India Software Engineer"
+  ]
+}

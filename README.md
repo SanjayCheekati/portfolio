@@ -13,6 +13,16 @@
 
 </div>
 
+## 🌐 Full Case Study
+
+**[View detailed project analysis and live demo on sanjaycheekati.dev →](https://sanjaycheekati.dev/#projects)**
+
+This project is part of my portfolio showcasing production-grade applications. Visit the link above to see:
+- 📊 Performance metrics and achievements
+- 🎯 Technical architecture deep-dive
+- 🚀 Live demo and deployment details
+- 💻 Development process and challenges
+
 ---
 
 ## 👋 About Me

@@ -1,0 +1,28 @@
+{
+  "repos": [
+    {
+      "name": "puretext",
+      "path": "../../puretext",
+      "description": "Privacy-first ChatGPT Chrome extension with zero tracking",
+      "topics": ["chrome-extension", "chatgpt", "react", "privacy", "ai", "openai"]
+    },
+    {
+      "name": "portfolio",
+      "path": "../",
+      "description": "Modern full-stack developer portfolio with AI-first SEO optimization",
+      "topics": ["react", "portfolio", "seo", "vite", "tailwindcss", "nextui"]
+    },
+    {
+      "name": "Sensitive-Content-Moderation-using-BERT",
+      "path": "../../Sensitive-Content-Moderation-using-BERT",
+      "description": "Fine-tuned BERT model for hate speech detection with 95% accuracy",
+      "topics": ["nlp", "bert", "machine-learning", "pytorch", "content-moderation", "transformers"]
+    },
+    {
+      "name": "K-means_NSGA-II_HHC",
+      "path": "../../K-means_NSGA-II_HHC",
+      "description": "Genetic algorithm optimization for healthcare clustering using NSGA-II",
+      "topics": ["genetic-algorithm", "nsga-ii", "k-means", "optimization", "healthcare", "python"]
+    }
+  ]
+}

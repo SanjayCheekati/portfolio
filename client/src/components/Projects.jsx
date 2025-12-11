@@ -1,9 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardBody, CardFooter, CardHeader, Button, Chip, Link, Divider } from '@nextui-org/react'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { Helmet } from 'react-helmet-async'
 import { projects } from '../data/projects'
+import { trackClick, trackProjectView } from '../utils/analytics'
 
 export default function Projects() {
+  // Update SEO when Projects section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Projects section is in view
+            document.title = 'Projects — AI, MERN, Web Apps by Sanjay Cheekati'
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    const section = document.getElementById('projects')
+    if (section) observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
   const [filter, setFilter] = useState('All')
   const categories = ['All', 'ML', 'Web', 'Live']
 
@@ -17,6 +38,14 @@ export default function Projects() {
 
   return (
     <div>
+      {/* SEO for Projects Section */}
+      <Helmet>
+        <title>Projects — AI, MERN, Web Apps by Sanjay Cheekati</title>
+        <meta name="description" content="Explore full-stack projects by Sanjay Cheekati including BERT toxicity detection, MERN applications, genetic algorithms, and modern web tools." />
+        <meta property="og:title" content="Projects — AI, MERN, Web Apps by Sanjay Cheekati" />
+        <meta property="og:description" content="Explore full-stack projects by Sanjay Cheekati including BERT toxicity detection, MERN applications, genetic algorithms, and modern web tools." />
+      </Helmet>
+
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 text-primary">Featured Work</h2>
         <p className="text-default-600 text-lg max-w-2xl mx-auto">
@@ -86,6 +115,10 @@ export default function Projects() {
                   variant="bordered"
                   startContent={<FiGithub />}
                   className="flex-1"
+                  onClick={() => {
+                    trackClick(`project_github_${project.id}`);
+                    trackProjectView(project.title);
+                  }}
                 >
                   Code
                 </Button>
@@ -99,6 +132,10 @@ export default function Projects() {
                   color="primary"
                   startContent={<FiExternalLink />}
                   className="flex-1"
+                  onClick={() => {
+                    trackClick(`project_live_${project.id}`);
+                    trackProjectView(project.title);
+                  }}
                 >
                   Live Demo
                 </Button>
@@ -109,7 +146,8 @@ export default function Projects() {
       </div>
 
       {/* View All Projects CTA */}
-      <div className="text-center mt-12">
+      <d  onClick={() => trackClick('projects_view_more_github')}
+        iv className="text-center mt-12">
         <Button
           as={Link}
           href="https://github.com/SanjayCheekati"
