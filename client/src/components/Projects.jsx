@@ -146,8 +146,7 @@ export default function Projects() {
       </div>
 
       {/* View All Projects CTA */}
-      <d  onClick={() => trackClick('projects_view_more_github')}
-        iv className="text-center mt-12">
+      <div className="text-center mt-12">
         <Button
           as={Link}
           href="https://github.com/SanjayCheekati"
@@ -155,6 +154,7 @@ export default function Projects() {
           variant="bordered"
           size="lg"
           startContent={<FiGithub />}
+          onClick={() => trackClick('projects_view_more_github')}
         >
           Explore More on GitHub
         </Button>

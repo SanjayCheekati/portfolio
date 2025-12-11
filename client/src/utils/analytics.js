@@ -69,7 +69,11 @@ export const trackClick = (label, params = {}) => {
 
 /**
  * Track page views (for SPA navigation)
- * @if (import.meta.env.DEV) {
+ * @param {string} path - Page path (e.g., "/projects")
+ */
+export const trackPageView = (path) => {
+  if (!window.gtag) {
+    if (import.meta.env.DEV) {
       console.warn('Google Analytics: gtag not initialized');
     }
     return;
@@ -83,10 +87,6 @@ export const trackClick = (label, params = {}) => {
   if (import.meta.env.DEV) {
     console.log('GA Event: page_view ->', path);
   }
-    page_title: document.title,
-  });
-
-  console.log('GA Event: page_view ->', path);
 };
 
 /**
@@ -97,13 +97,13 @@ export const trackProjectView = (projectName) => {
   if (!window.gtag) return;
 
   window.gtag('event', 'view_item', {
-  if (import.meta.env.DEV) {
-    console.log('GA Event: view_item ->', projectName);
-  }
+    event_category: 'Projects',
     event_label: projectName,
   });
 
-  console.log('GA Event: view_item ->', projectName);
+  if (import.meta.env.DEV) {
+    console.log('GA Event: view_item ->', projectName);
+  }
 };
 
 /**
@@ -111,15 +111,15 @@ export const trackProjectView = (projectName) => {
  * @param {string} action - Action type (e.g., "email_click", "form_submit")
  */
 export const trackContact = (action) => {
-  if (import.meta.env.DEV) {
-    console.log('GA Event: contact ->', action);
-  }
+  if (!window.gtag) return;
 
   window.gtag('event', action, {
     event_category: 'Contact',
   });
 
-  console.log('GA Event: contact ->', action);
+  if (import.meta.env.DEV) {
+    console.log('GA Event: contact ->', action);
+  }
 };
 
 /**
@@ -128,9 +128,7 @@ export const trackContact = (action) => {
  * @param {string} label - Link label
  */
 export const trackExternalLink = (url, label) => {
-  if (import.meta.env.DEV) {
-    console.log('GA Event: external_link ->', label, url);
-  }
+  if (!window.gtag) return;
 
   window.gtag('event', 'click', {
     event_category: 'External Link',
@@ -138,7 +136,9 @@ export const trackExternalLink = (url, label) => {
     value: url,
   });
 
-  console.log('GA Event: external_link ->', label, url);
+  if (import.meta.env.DEV) {
+    console.log('GA Event: external_link ->', label, url);
+  }
 };
 
 /**
@@ -148,23 +148,21 @@ export const trackExternalLink = (url, label) => {
 export const trackScrollDepth = (percentage) => {
   if (!window.gtag) return;
 
-  if (import.meta.env.DEV) {
-    console.log('GA Event: scroll ->', `${percentage}%`);
-  }
+  window.gtag('event', 'scroll', {
     event_category: 'Engagement',
     event_label: `${percentage}%`,
     value: percentage,
   });
 
-  console.log('GA Event: scroll ->', `${percentage}%`);
+  if (import.meta.env.DEV) {
+    console.log('GA Event: scroll ->', `${percentage}%`);
+  }
 };
 
 /**
  * Track resume downloads
  */
-exif (import.meta.env.DEV) {
-    console.log('GA Event: resume_download');
-  }
+export const trackResumeDownload = () => {
   if (!window.gtag) return;
 
   window.gtag('event', 'file_download', {
@@ -172,5 +170,7 @@ exif (import.meta.env.DEV) {
     event_label: 'resume.pdf',
   });
 
-  console.log('GA Event: resume_download');
+  if (import.meta.env.DEV) {
+    console.log('GA Event: resume_download');
+  }
 };
